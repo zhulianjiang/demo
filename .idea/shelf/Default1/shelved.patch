@@ -1,0 +1,70 @@
+Index: hnparent/common/target/classes/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>server:\r\n  port: 8081\r\n#  servlet:\r\n#    context-path: /demo\r\nspring:\r\n  datasource:\r\n    url:  jdbc:mysql://127.0.0.1:3306/demo?useSSL=false&useUnicode=true&characterEncoding=utf-8\r\n    username: root\r\n    password: root123\r\n    driver-class-name: com.mysql.jdbc.Driver\r\n    type: com.alibaba.druid.pool.DruidDataSource\r\n  #thymeleaf\r\n  thymeleaf:\r\n    prefix: classpath:/templates/\r\n    suffix: .html\r\n    cache: false\r\n    servlet:\r\n      content-type: text/html\r\n    enabled: true\r\n    encoding: UTF-8\r\n    mode: HTML5\r\nmybatis:\r\n  mapper-locations: classpath:mapper/*Mapper.xml    #配置映射文件\r\n  type-aliases-package: entity   #配置实体类
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/common/target/classes/application.yml	(revision a2e14491b8db5eea6bc899fc2f79b6bf4e83b48e)
++++ hnparent/common/target/classes/application.yml	(date 1614935674788)
+@@ -10,15 +10,15 @@
+     driver-class-name: com.mysql.jdbc.Driver
+     type: com.alibaba.druid.pool.DruidDataSource
+   #thymeleaf
+-  thymeleaf:
+-    prefix: classpath:/templates/
+-    suffix: .html
+-    cache: false
+-    servlet:
+-      content-type: text/html
+-    enabled: true
+-    encoding: UTF-8
+-    mode: HTML5
++#  thymeleaf:
++#    prefix: classpath:/templates/
++#    suffix: .html
++#    cache: false
++#    servlet:
++#      content-type: text/html
++#    enabled: true
++#    encoding: UTF-8
++#    mode: HTML5
+ mybatis:
+   mapper-locations: classpath:mapper/*Mapper.xml    #配置映射文件
+   type-aliases-package: entity   #配置实体类
+\ No newline at end of file
+Index: hnparent/common/src/main/resources/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>server:\r\n  port: 8081\r\n#  servlet:\r\n#    context-path: /demo\r\nspring:\r\n  datasource:\r\n    url:  jdbc:mysql://127.0.0.1:3306/demo?useSSL=false&useUnicode=true&characterEncoding=utf-8\r\n    username: root\r\n    password: root123\r\n    driver-class-name: com.mysql.jdbc.Driver\r\n    type: com.alibaba.druid.pool.DruidDataSource\r\n  #thymeleaf\r\n  thymeleaf:\r\n    prefix: classpath:/templates/\r\n    suffix: .html\r\n    cache: false\r\n    servlet:\r\n      content-type: text/html\r\n    enabled: true\r\n    encoding: UTF-8\r\n    mode: HTML5\r\nmybatis:\r\n  mapper-locations: classpath:mapper/*Mapper.xml    #配置映射文件\r\n  type-aliases-package: entity   #配置实体类
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/common/src/main/resources/application.yml	(revision a2e14491b8db5eea6bc899fc2f79b6bf4e83b48e)
++++ hnparent/common/src/main/resources/application.yml	(date 1614935070203)
+@@ -10,15 +10,15 @@
+     driver-class-name: com.mysql.jdbc.Driver
+     type: com.alibaba.druid.pool.DruidDataSource
+   #thymeleaf
+-  thymeleaf:
+-    prefix: classpath:/templates/
+-    suffix: .html
+-    cache: false
+-    servlet:
+-      content-type: text/html
+-    enabled: true
+-    encoding: UTF-8
+-    mode: HTML5
++#  thymeleaf:
++#    prefix: classpath:/templates/
++#    suffix: .html
++#    cache: false
++#    servlet:
++#      content-type: text/html
++#    enabled: true
++#    encoding: UTF-8
++#    mode: HTML5
+ mybatis:
+   mapper-locations: classpath:mapper/*Mapper.xml    #配置映射文件
+   type-aliases-package: entity   #配置实体类
+\ No newline at end of file

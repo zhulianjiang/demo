@@ -1,0 +1,1795 @@
+Index: hnparent/function-one/src/main/java/com/hengnan/core/UnifyResponse.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hengnan.core;\r\n\r\n/**\r\n * @description: 错误返回信息\r\n * @author: leozhu\r\n * @create: 2020-09-24 23:11\r\n **/\r\npublic class UnifyResponse {\r\n    private Integer code;\r\n    private String message;\r\n    private String url;\r\n\r\n    public UnifyResponse(int code,String message,String url){\r\n        this.code = code;\r\n        this.message = message;\r\n        this.url = url;\r\n    }\r\n\r\n    public Integer getCode() {\r\n        return code;\r\n    }\r\n\r\n    public void setCode(Integer code) {\r\n        this.code = code;\r\n    }\r\n\r\n    public String getMessage() {\r\n        return message;\r\n    }\r\n\r\n    public void setMessage(String message) {\r\n        this.message = message;\r\n    }\r\n\r\n    public String getUrl() {\r\n        return url;\r\n    }\r\n\r\n    public void setUrl(String url) {\r\n        this.url = url;\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/function-one/src/main/java/com/hengnan/core/UnifyResponse.java	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/function-one/src/main/java/com/hengnan/core/UnifyResponse.java	(date 1619055974017)
+@@ -10,7 +10,7 @@
+     private String message;
+     private String url;
+ 
+-    public UnifyResponse(int code,String message,String url){
++    public UnifyResponse(int code, String message, String url) {
+         this.code = code;
+         this.message = message;
+         this.url = url;
+Index: hnparent/common/src/main/java/com/hengnan/CommonApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hengnan;\r\n\r\nimport org.springframework.boot.SpringApplication;\r\nimport org.springframework.boot.autoconfigure.SpringBootApplication;\r\n\r\n/**\r\n * @description:\r\n * @author: leozhu\r\n * @create: 2021/4/21\r\n **/\r\n@SpringBootApplication\r\npublic class CommonApplication {\r\n    public static void main(String[] args) {\r\n        SpringApplication.run(CommonApplication.class,args);\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/common/src/main/java/com/hengnan/CommonApplication.java	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/common/src/main/java/com/hengnan/CommonApplication.java	(date 1619055973586)
+@@ -11,7 +11,7 @@
+ @SpringBootApplication
+ public class CommonApplication {
+     public static void main(String[] args) {
+-        SpringApplication.run(CommonApplication.class,args);
++        SpringApplication.run(CommonApplication.class, args);
+     }
+ 
+ }
+Index: hnparent/common/src/main/java/com/hengnan/entity/enums/MessageEnum.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hengnan.entity.enums;\r\n\r\nimport com.wise.framework.basic.IEnum;\r\n\r\n/**\r\n * @description: 消息枚举\r\n * @author: leozhu\r\n * @create: 2021/4/21\r\n **/\r\npublic enum MessageEnum implements IEnum<Integer> {\r\n\r\n    SUCCESS(200,\"成功\"),\r\n    FAIL(400,\"失败\"),\r\n\r\n    ERR_USER_NAME(1001001001,\"登录失败，用户不存在\"),\r\n    ERR_USER_PASSWORD(1001001002,\"登录失败，密码错误\");\r\n\r\n    private int value;\r\n    private String title;\r\n\r\n    MessageEnum(int value,String title){\r\n        this.value = value;\r\n        this.title = title;\r\n    }\r\n\r\n    @Override\r\n    public Integer value() {\r\n        return this.value;\r\n    }\r\n\r\n    @Override\r\n    public String title() {\r\n        return this.title;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/common/src/main/java/com/hengnan/entity/enums/MessageEnum.java	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/common/src/main/java/com/hengnan/entity/enums/MessageEnum.java	(date 1619055974309)
+@@ -9,16 +9,16 @@
+  **/
+ public enum MessageEnum implements IEnum<Integer> {
+ 
+-    SUCCESS(200,"成功"),
+-    FAIL(400,"失败"),
++    SUCCESS(200, "成功"),
++    FAIL(400, "失败"),
+ 
+-    ERR_USER_NAME(1001001001,"登录失败，用户不存在"),
+-    ERR_USER_PASSWORD(1001001002,"登录失败，密码错误");
++    ERR_USER_NAME(1001001001, "登录失败，用户不存在"),
++    ERR_USER_PASSWORD(1001001002, "登录失败，密码错误");
+ 
+     private int value;
+     private String title;
+ 
+-    MessageEnum(int value,String title){
++    MessageEnum(int value, String title) {
+         this.value = value;
+         this.title = title;
+     }
+Index: hnparent/function-one/src/main/java/com/hengnan/config/InterceptorConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hengnan.config;\r\n\r\nimport com.hengnan.handler.AuthenticationInterceptor;\r\nimport org.springframework.context.annotation.Bean;\r\nimport org.springframework.context.annotation.Configuration;\r\nimport org.springframework.web.servlet.config.annotation.InterceptorRegistry;\r\nimport org.springframework.web.servlet.config.annotation.WebMvcConfigurer;\r\n\r\n@Configuration\r\npublic class InterceptorConfig implements WebMvcConfigurer {\r\n    @Override\r\n    public void addInterceptors(InterceptorRegistry registry) {\r\n        registry.addInterceptor(authenticationInterceptor())\r\n                .addPathPatterns(\"/**\")\r\n                .excludePathPatterns(\"/swagger-resources/**\",\"/webjars/**\",\"/v2/**\",\"/swagger-ui.html/**\");\r\n    }\r\n    @Bean\r\n    public AuthenticationInterceptor authenticationInterceptor() {\r\n        return new AuthenticationInterceptor();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/function-one/src/main/java/com/hengnan/config/InterceptorConfig.java	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/function-one/src/main/java/com/hengnan/config/InterceptorConfig.java	(date 1619055974272)
+@@ -12,8 +12,9 @@
+     public void addInterceptors(InterceptorRegistry registry) {
+         registry.addInterceptor(authenticationInterceptor())
+                 .addPathPatterns("/**")
+-                .excludePathPatterns("/swagger-resources/**","/webjars/**","/v2/**","/swagger-ui.html/**");
++                .excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**");
+     }
++
+     @Bean
+     public AuthenticationInterceptor authenticationInterceptor() {
+         return new AuthenticationInterceptor();
+Index: hnparent/function-one/src/main/resources/application-dev.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>server:\r\n  port: 8081\r\n#  servlet:\r\n#    context-path: /demo\r\nspring:\r\n  datasource:\r\n    url:  jdbc:mysql://127.0.0.1:3306/demo?useSSL=false&useUnicode=true&characterEncoding=utf-8\r\n    username: root\r\n    password: root123\r\n    driver-class-name: com.mysql.jdbc.Driver\r\n    type: com.alibaba.druid.pool.DruidDataSource\r\n  #thymeleaf\r\n  thymeleaf:\r\n    prefix: classpath:/templates/\r\n    suffix: .html\r\n    cache: false\r\n    servlet:\r\n      content-type: text/html\r\n    enabled: true\r\n    encoding: UTF-8\r\n    mode: HTML5\r\n  rabbitmq:\r\n    host: 127.0.0.1\r\n    port: 5672\r\n    username: guest\r\n    password: guest\r\nmybatis:\r\n  mapper-locations: classpath:mapper/*Mapper.xml    #配置映射文件\r\n  type-aliases-package: entity   #配置实体类\r\n\r\n#xxl-job 配置数据\r\nxxl:\r\n  job:\r\n    admin:\r\n      addresses: http://127.0.0.1:8099/xxl-job-admin\r\n    executor:\r\n      appname: functionOne-executor\r\n      address:\r\n      ip:\r\n      port: 9998\r\n      logpath: /data/applogs/xxl-job/jobhandler\r\n      logretentiondays: 30\r\n    accessToken:\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/function-one/src/main/resources/application-dev.yml	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/function-one/src/main/resources/application-dev.yml	(date 1619055973382)
+@@ -4,7 +4,7 @@
+ #    context-path: /demo
+ spring:
+   datasource:
+-    url:  jdbc:mysql://127.0.0.1:3306/demo?useSSL=false&useUnicode=true&characterEncoding=utf-8
++    url: jdbc:mysql://127.0.0.1:3306/demo?useSSL=false&useUnicode=true&characterEncoding=utf-8
+     username: root
+     password: root123
+     driver-class-name: com.mysql.jdbc.Driver
+Index: hnparent/function-one/src/main/java/com/hengnan/handler/AuthenticationInterceptor.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hengnan.handler;\r\n\r\nimport com.auth0.jwt.JWT;\r\nimport com.auth0.jwt.JWTVerifier;\r\nimport com.auth0.jwt.algorithms.Algorithm;\r\nimport com.auth0.jwt.exceptions.JWTDecodeException;\r\nimport com.auth0.jwt.exceptions.JWTVerificationException;\r\nimport com.hengnan.base.PassToken;\r\nimport com.hengnan.core.exception.http.ForbiddenException;\r\nimport com.hengnan.core.exception.http.NotFondException;\r\nimport com.hengnan.entity.UserAdmin;\r\nimport com.hengnan.service.UserAdminService;\r\nimport org.apache.commons.lang.StringUtils;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.web.method.HandlerMethod;\r\nimport org.springframework.web.servlet.HandlerInterceptor;\r\nimport org.springframework.web.servlet.ModelAndView;\r\n\r\nimport javax.servlet.http.HttpServletRequest;\r\nimport javax.servlet.http.HttpServletResponse;\r\nimport java.lang.reflect.Method;\r\nimport java.util.Arrays;\r\n\r\n/**\r\n * 拦截器\r\n */\r\npublic class AuthenticationInterceptor implements HandlerInterceptor {\r\n\r\n    private static final String SEPARATOR = \" \";\r\n\r\n    @Autowired\r\n    UserAdminService userService;\r\n\r\n    @Override\r\n    public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object object) {\r\n        // 从 http 请求头中取出 Authorization\r\n        String bearerToken = httpServletRequest.getHeader(\"Authorization\");\r\n        String token = null;\r\n        if(StringUtils.isNotBlank(bearerToken)){\r\n            token = Arrays.asList(bearerToken.split(SEPARATOR)).get(1);\r\n        }\r\n        // 如果不是映射到方法直接通过\r\n        if (!(object instanceof HandlerMethod)) {\r\n            return true;\r\n        }\r\n        HandlerMethod handlerMethod = (HandlerMethod) object;\r\n        Method method = handlerMethod.getMethod();\r\n        //检查是否有passtoken注释，有则跳过认证\r\n        if (method.isAnnotationPresent(PassToken.class)) {\r\n            PassToken passToken = method.getAnnotation(PassToken.class);\r\n            if (passToken.required()) {\r\n                return true;\r\n            }\r\n        }\r\n        if (token == null) {\r\n            throw new ForbiddenException(100001001);\r\n        }\r\n        // 获取 token 中的 user id\r\n        String userId;\r\n        try {\r\n            userId = JWT.decode(token).getAudience().get(0);\r\n        } catch (JWTDecodeException j) {\r\n            throw new ForbiddenException(100001002);\r\n        }\r\n        UserAdmin user = userService.findById(userId);\r\n        if (user == null) {\r\n            throw new NotFondException(100001003);\r\n        }\r\n        // 验证 token\r\n        JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(user.getPassWord())).build();\r\n        try {\r\n            jwtVerifier.verify(token);\r\n        } catch (JWTVerificationException e) {\r\n            throw new ForbiddenException(100001002);\r\n        }\r\n        return true;\r\n    }\r\n\r\n    @Override\r\n    public void postHandle(HttpServletRequest httpServletRequest,\r\n                           HttpServletResponse httpServletResponse,\r\n                           Object o, ModelAndView modelAndView) throws Exception {\r\n\r\n    }\r\n\r\n    @Override\r\n    public void afterCompletion(HttpServletRequest httpServletRequest,\r\n                                HttpServletResponse httpServletResponse,\r\n                                Object o, Exception e) throws Exception {\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/function-one/src/main/java/com/hengnan/handler/AuthenticationInterceptor.java	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/function-one/src/main/java/com/hengnan/handler/AuthenticationInterceptor.java	(date 1619055974168)
+@@ -36,7 +36,7 @@
+         // 从 http 请求头中取出 Authorization
+         String bearerToken = httpServletRequest.getHeader("Authorization");
+         String token = null;
+-        if(StringUtils.isNotBlank(bearerToken)){
++        if (StringUtils.isNotBlank(bearerToken)) {
+             token = Arrays.asList(bearerToken.split(SEPARATOR)).get(1);
+         }
+         // 如果不是映射到方法直接通过
+Index: hnparent/function-one/src/main/resources/config/exception-code.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#000(错误定义者) 000(模块) 000(错误号) xxxx(错误文本)\r\n\r\nhengnan.codes[100001001] = 无token，请重新登录\r\nhengnan.codes[100001002] = token无效，请重新登录\r\nhengnan.codes[100001003] = 用户不存在，请重新登录
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>NATIVE_TO_ASCII_UTF-8
+===================================================================
+--- hnparent/function-one/src/main/resources/config/exception-code.properties	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/function-one/src/main/resources/config/exception-code.properties	(date 1619055973834)
+@@ -1,5 +1,4 @@
+ #000(错误定义者) 000(模块) 000(错误号) xxxx(错误文本)
+-
+-hengnan.codes[100001001] = 无token，请重新登录
+-hengnan.codes[100001002] = token无效，请重新登录
+-hengnan.codes[100001003] = 用户不存在，请重新登录
+\ No newline at end of file
++hengnan.codes[100001001]=无token，请重新登录
++hengnan.codes[100001002]=token无效，请重新登录
++hengnan.codes[100001003]=用户不存在，请重新登录
+\ No newline at end of file
+Index: hnparent/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># Created by .ignore support plugin (hsz.mobi)\r\n### Java template\r\n# Compiled class file\r\n*.class\r\n\r\n# Log file\r\n*.log\r\n\r\n# BlueJ files\r\n*.ctxt\r\n\r\n# Mobile Tools for Java (J2ME)\r\n.mtj.tmp/\r\n\r\n# Package Files #\r\n*.jar\r\n*.war\r\n*.nar\r\n*.ear\r\n*.zip\r\n*.tar.gz\r\n*.rar\r\n\r\n# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml\r\nhs_err_pid*\r\n\r\n### Maven template\r\ntarget/\r\npom.xml.tag\r\npom.xml.releaseBackup\r\npom.xml.versionsBackup\r\npom.xml.next\r\nrelease.properties\r\ndependency-reduced-pom.xml\r\nbuildNumber.properties\r\n.mvn/timing.properties\r\n# https://github.com/takari/maven-wrapper#usage-without-binary-jar\r\n.mvn/wrapper/maven-wrapper.jar\r\n\r\n### JetBrains template\r\n# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm\r\n# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839\r\n\r\n# User-specific stuff\r\n.idea/**/workspace.xml\r\n.idea/**/tasks.xml\r\n.idea/**/usage.statistics.xml\r\n.idea/**/dictionaries\r\n.idea/**/shelf\r\n\r\n# Generated files\r\n.idea/**/contentModel.xml\r\n\r\n# Sensitive or high-churn files\r\n.idea/**/dataSources/\r\n.idea/**/dataSources.ids\r\n.idea/**/dataSources.local.xml\r\n.idea/**/sqlDataSources.xml\r\n.idea/**/dynamic.xml\r\n.idea/**/uiDesigner.xml\r\n.idea/**/dbnavigator.xml\r\n\r\n# Gradle\r\n.idea/**/gradle.xml\r\n.idea/**/libraries\r\n\r\n# Gradle and Maven with auto-import\r\n# When using Gradle or Maven with auto-import, you should exclude module files,\r\n# since they will be recreated, and may cause churn.  Uncomment if using\r\n# auto-import.\r\n# .idea/artifacts\r\n# .idea/compiler.xml\r\n# .idea/modules.xml\r\n# .idea/*.iml\r\n# .idea/modules\r\n# *.iml\r\n# *.ipr\r\n\r\n# CMake\r\ncmake-build-*/\r\n\r\n# Mongo Explorer plugin\r\n.idea/**/mongoSettings.xml\r\n\r\n# File-based project format\r\n*.iws\r\n\r\n# IntelliJ\r\nout/\r\n\r\n# mpeltonen/sbt-idea plugin\r\n.idea_modules/\r\n\r\n# JIRA plugin\r\natlassian-ide-plugin.xml\r\n\r\n# Cursive Clojure plugin\r\n.idea/replstate.xml\r\n\r\n# Crashlytics plugin (for Android Studio and IntelliJ)\r\ncom_crashlytics_export_strings.xml\r\ncrashlytics.properties\r\ncrashlytics-build.properties\r\nfabric.properties\r\n\r\n# Editor-based Rest Client\r\n.idea/httpRequests\r\n\r\n# Android studio 3.1+ serialized cache file\r\n.idea/caches/build_file_checksums.ser\r\n\r\n### Example user template template\r\n### Example user template\r\n\r\n# IntelliJ project files\r\n.idea\r\n*.iml\r\nout\r\ngen\r\n### Redis template\r\n# Ignore redis binary dump (dump.rdb) files\r\n\r\n*.rdb\r\n\r\n.gitignore\r\n.idea/.gitignore\r\n.idea/.name\r\n.idea/artifacts/\r\n.idea/compiler.xml\r\n.idea/encodings.xml\r\n.idea/inspectionProfiles/\r\n.idea/libraries/\r\n.idea/misc.xml\r\n.idea/modules.xml\r\n.idea/qaplug_profiles.xml\r\n.idea/vcs.xml\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/.gitignore	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/.gitignore	(date 1619055972713)
+@@ -1,136 +1,33 @@
+-# Created by .ignore support plugin (hsz.mobi)
+-### Java template
+-# Compiled class file
+-*.class
+-
+-# Log file
+-*.log
+-
+-# BlueJ files
+-*.ctxt
+-
+-# Mobile Tools for Java (J2ME)
+-.mtj.tmp/
+-
+-# Package Files #
+-*.jar
+-*.war
+-*.nar
+-*.ear
+-*.zip
+-*.tar.gz
+-*.rar
+-
+-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+-hs_err_pid*
+-
+-### Maven template
++HELP.md
+ target/
+-pom.xml.tag
+-pom.xml.releaseBackup
+-pom.xml.versionsBackup
+-pom.xml.next
+-release.properties
+-dependency-reduced-pom.xml
+-buildNumber.properties
+-.mvn/timing.properties
+-# https://github.com/takari/maven-wrapper#usage-without-binary-jar
+-.mvn/wrapper/maven-wrapper.jar
+-
+-### JetBrains template
+-# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
+-# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+-
+-# User-specific stuff
+-.idea/**/workspace.xml
+-.idea/**/tasks.xml
+-.idea/**/usage.statistics.xml
+-.idea/**/dictionaries
+-.idea/**/shelf
+-
+-# Generated files
+-.idea/**/contentModel.xml
+-
+-# Sensitive or high-churn files
+-.idea/**/dataSources/
+-.idea/**/dataSources.ids
+-.idea/**/dataSources.local.xml
+-.idea/**/sqlDataSources.xml
+-.idea/**/dynamic.xml
+-.idea/**/uiDesigner.xml
+-.idea/**/dbnavigator.xml
+-
+-# Gradle
+-.idea/**/gradle.xml
+-.idea/**/libraries
+-
+-# Gradle and Maven with auto-import
+-# When using Gradle or Maven with auto-import, you should exclude module files,
+-# since they will be recreated, and may cause churn.  Uncomment if using
+-# auto-import.
+-# .idea/artifacts
+-# .idea/compiler.xml
+-# .idea/modules.xml
+-# .idea/*.iml
+-# .idea/modules
+-# *.iml
+-# *.ipr
+-
+-# CMake
+-cmake-build-*/
+-
+-# Mongo Explorer plugin
+-.idea/**/mongoSettings.xml
+-
+-# File-based project format
+-*.iws
+-
+-# IntelliJ
+-out/
+-
+-# mpeltonen/sbt-idea plugin
+-.idea_modules/
+-
+-# JIRA plugin
+-atlassian-ide-plugin.xml
+-
+-# Cursive Clojure plugin
+-.idea/replstate.xml
+-
+-# Crashlytics plugin (for Android Studio and IntelliJ)
+-com_crashlytics_export_strings.xml
+-crashlytics.properties
+-crashlytics-build.properties
+-fabric.properties
+-
+-# Editor-based Rest Client
+-.idea/httpRequests
++!.mvn/wrapper/maven-wrapper.jar
++!**/src/main/**/target/
++!**/src/test/**/target/
+ 
+-# Android studio 3.1+ serialized cache file
+-.idea/caches/build_file_checksums.ser
++### STS ###
++.apt_generated
++.classpath
++.factorypath
++.project
++.settings
++.springBeans
++.sts4-cache
+ 
+-### Example user template template
+-### Example user template
+-
+-# IntelliJ project files
++### IntelliJ IDEA ###
+ .idea
++*.iws
+ *.iml
+-out
+-gen
+-### Redis template
+-# Ignore redis binary dump (dump.rdb) files
++*.ipr
+ 
+-*.rdb
++### NetBeans ###
++/nbproject/private/
++/nbbuild/
++/dist/
++/nbdist/
++/.nb-gradle/
++build/
++!**/src/main/**/build/
++!**/src/test/**/build/
+ 
+-.gitignore
+-.idea/.gitignore
+-.idea/.name
+-.idea/artifacts/
+-.idea/compiler.xml
+-.idea/encodings.xml
+-.idea/inspectionProfiles/
+-.idea/libraries/
+-.idea/misc.xml
+-.idea/modules.xml
+-.idea/qaplug_profiles.xml
+-.idea/vcs.xml
++### VS Code ###
++.vscode/
+Index: hnparent/common/src/main/java/com/hengnan/mapper/UserMapper.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hengnan.mapper;\r\n\r\nimport com.hengnan.entity.User;\r\nimport org.apache.ibatis.annotations.Mapper;\r\nimport org.apache.ibatis.annotations.Param;\r\nimport org.apache.ibatis.annotations.Select;\r\nimport org.springframework.stereotype.Component;\r\n\r\nimport java.util.List;\r\n\r\n\r\n@Mapper\r\npublic interface UserMapper {\r\n\r\n//    @Select(\"select * from user\")\r\n    List<User> getUserList();\r\n\r\n    User getUserById(@Param(\"id\") Integer id);\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/common/src/main/java/com/hengnan/mapper/UserMapper.java	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/common/src/main/java/com/hengnan/mapper/UserMapper.java	(date 1619055974383)
+@@ -12,7 +12,7 @@
+ @Mapper
+ public interface UserMapper {
+ 
+-//    @Select("select * from user")
++    //    @Select("select * from user")
+     List<User> getUserList();
+ 
+     User getUserById(@Param("id") Integer id);
+Index: hnparent/common/src/main/java/com/hengnan/entity/enums/StatusEnum.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hengnan.entity.enums;\r\n\r\n\r\nimport com.wise.framework.basic.IEnum;\r\n\r\npublic enum StatusEnum implements IEnum<Integer> {\r\n\r\n    /**\r\n     * 1 正常\r\n     * 0 删除\r\n     */\r\n\r\n    NORMAL(1,\"正常\"),\r\n    DELETE(0,\"删除\");\r\n\r\n    private int value;\r\n    private String title;\r\n\r\n    StatusEnum(int value,String title){\r\n        this.value = value;\r\n        this.title = title;\r\n    }\r\n\r\n    @Override\r\n    public Integer value() {\r\n        return this.value;\r\n    }\r\n\r\n    @Override\r\n    public String title() {\r\n        return this.title;\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/common/src/main/java/com/hengnan/entity/enums/StatusEnum.java	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/common/src/main/java/com/hengnan/entity/enums/StatusEnum.java	(date 1619055973738)
+@@ -10,13 +10,13 @@
+      * 0 删除
+      */
+ 
+-    NORMAL(1,"正常"),
+-    DELETE(0,"删除");
++    NORMAL(1, "正常"),
++    DELETE(0, "删除");
+ 
+     private int value;
+     private String title;
+ 
+-    StatusEnum(int value,String title){
++    StatusEnum(int value, String title) {
+         this.value = value;
+         this.title = title;
+     }
+Index: hnparent/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\r\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n    <modelVersion>4.0.0</modelVersion>\r\n\r\n    <groupId>com.hengnan</groupId>\r\n    <artifactId>hn-parent</artifactId>\r\n    <version>1.0-SNAPSHOT</version>\r\n    <modules>\r\n        <module>common</module>\r\n        <module>function-one</module>\r\n        <module>function-two</module>\r\n    </modules>\r\n\r\n    <packaging>pom</packaging>\r\n    <name>demo</name>\r\n    <description>parent project</description>\r\n\r\n    <!-- 本项目的父模块使用spring-boot框架 -->\r\n    <parent>\r\n        <groupId>org.springframework.boot</groupId>\r\n        <artifactId>spring-boot-starter-parent</artifactId>\r\n        <version>2.4.0</version>\r\n    </parent>\r\n\r\n    <!-- 项目自定义属性 -->\r\n    <properties>\r\n        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\r\n        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>\r\n        <java.version>1.8</java.version>\r\n        <!-- 依赖的版本号：在定义版本时，要注意的是不同的依赖版本之间会有影响，有些最新的版本不支持其他依赖的低版本一起使用-->\r\n        <mysql.driver.version>5.1.29</mysql.driver.version>\r\n        <org.mybatis.spring.boot.version>1.3.1</org.mybatis.spring.boot.version>\r\n        <alibaba.druid.version>1.1.9</alibaba.druid.version>\r\n        <spring.cloud.version>Edgware.SR1</spring.cloud.version>\r\n        <basic.entity.version>1.0.0.2</basic.entity.version>\r\n        <log4j.jdbc.version>1.2</log4j.jdbc.version>\r\n    </properties>\r\n\r\n    <!-- 项目依赖项 -->\r\n    <dependencyManagement>    <!-- dependencyManagement只是声明依赖，并不实现引入 -->\r\n        <dependencies>\r\n            <!-- Spring Cloud -->\r\n            <dependency>\r\n                <groupId>org.springframework.cloud</groupId>\r\n                <artifactId>spring-cloud-dependencies</artifactId>\r\n                <version>${spring.cloud.version}</version>\r\n                <type>pom</type>\r\n                <scope>import</scope>\r\n            </dependency>\r\n        </dependencies>\r\n    </dependencyManagement>\r\n\r\n    <dependencies>\r\n        <!-- Spring Boot -->\r\n        <dependency>\r\n            <groupId>org.springframework.boot</groupId>\r\n            <artifactId>spring-boot-starter</artifactId>\r\n            <version>2.0.2.RELEASE</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.springframework.boot</groupId>\r\n            <artifactId>spring-boot-starter-web</artifactId>\r\n            <version>2.0.2.RELEASE</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.springframework.boot</groupId>\r\n            <artifactId>spring-boot-starter-test</artifactId>\r\n            <scope>test</scope>\r\n        </dependency>\r\n        <!-- 添加junit4依赖 单元测试-->\r\n        <dependency>\r\n            <groupId>junit</groupId>\r\n            <artifactId>junit</artifactId>\r\n            <version>4.12</version>\r\n            <scope>test</scope>\r\n        </dependency>\r\n        <!-- 切面 -->\r\n<!--        <dependency>-->\r\n<!--            <groupId>org.aspectj</groupId>-->\r\n<!--            <artifactId>aspectjweaver</artifactId>-->\r\n<!--            <version>1.8.8</version>-->\r\n<!--        </dependency>-->\r\n        <!-- 简化Entity代码（实体类添加@Data，编译时为所有字段添加@ToString/@EqualsAndHashCode/@Getter/为非final字段添加@Setter） -->\r\n        <dependency>\r\n            <groupId>org.projectlombok</groupId>\r\n            <artifactId>lombok</artifactId>\r\n            <version>1.16.20</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>mysql</groupId>\r\n            <artifactId>mysql-connector-java</artifactId>\r\n            <scope>runtime</scope>\r\n            <version>${mysql.driver.version}</version>\r\n        </dependency>\r\n        <!-- 添加数据库连接池依赖 -->\r\n        <dependency>\r\n            <groupId>com.alibaba</groupId>\r\n            <artifactId>druid</artifactId>\r\n            <version>${alibaba.druid.version}</version>\r\n        </dependency>\r\n        <!-- 实体基础类 -->\r\n        <dependency>\r\n            <groupId>com.hn</groupId>\r\n            <artifactId>basic-entity</artifactId>\r\n            <version>${basic.entity.version}</version>\r\n        </dependency>\r\n        <!-- Log4j 日志 -->\r\n        <dependency>\r\n            <groupId>com.googlecode.log4jdbc</groupId>\r\n            <artifactId>log4jdbc</artifactId>\r\n            <version>${log4j.jdbc.version}</version>\r\n        </dependency>\r\n        <!-- mybatis-plus SpringBoot整合 -->\r\n        <dependency>\r\n            <groupId>com.baomidou</groupId>\r\n            <artifactId>mybatis-plus-boot-starter</artifactId>\r\n            <version>3.3.1</version>\r\n        </dependency>\r\n        <!-- 数据处理工具 -->\r\n        <dependency>\r\n            <groupId>com.hn</groupId>\r\n            <artifactId>basic-util</artifactId>\r\n            <version>1.0.0.1</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>com.hn</groupId>\r\n            <artifactId>hutool-all</artifactId>\r\n            <version>4.1.5</version>\r\n        </dependency>\r\n        <!-- knife4j API增强版 -->\r\n        <dependency>\r\n            <groupId>com.github.xiaoymin</groupId>\r\n            <artifactId>knife4j-spring-boot-starter</artifactId>\r\n            <version>2.0.7</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.springframework.boot</groupId>\r\n            <artifactId>spring-boot-starter-test</artifactId>\r\n            <scope>test</scope>\r\n            <exclusions>\r\n                <exclusion>\r\n                    <groupId>org.junit.vintage</groupId>\r\n                    <artifactId>junit-vintage-engine</artifactId>\r\n                </exclusion>\r\n            </exclusions>\r\n        </dependency>\r\n    </dependencies>\r\n    <!-- <scope>主要管理依赖的部署\r\n       * compile，缺省值，适用于所有阶段，会随着项目一起发布。\r\n       * provided，类似compile，期望JDK、容器或使用者会提供这个依赖。如servlet.jar。\r\n       * runtime，只在运行时使用，如JDBC驱动，适用运行和测试阶段。\r\n       * test，只在测试时使用，用于编译和运行测试代码。不会随项目发布。\r\n       * system，类似provided，需要显式提供包含依赖的jar，Maven不会在Repository中查找它。\r\n    -->\r\n\r\n    <build>\r\n        <plugins>\r\n            <!--打包跳过测试-->\r\n            <plugin>\r\n                <groupId>org.apache.maven.plugins</groupId>\r\n                <artifactId>maven-surefire-plugin</artifactId>\r\n                <configuration>\r\n                    <skip>true</skip>\r\n                </configuration>\r\n            </plugin>\r\n        </plugins>\r\n    </build>\r\n\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/pom.xml	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/pom.xml	(date 1619055972714)
+@@ -1,171 +1,41 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<project xmlns="http://maven.apache.org/POM/4.0.0"
+-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+-    <modelVersion>4.0.0</modelVersion>
+-
+-    <groupId>com.hengnan</groupId>
+-    <artifactId>hn-parent</artifactId>
+-    <version>1.0-SNAPSHOT</version>
+-    <modules>
+-        <module>common</module>
+-        <module>function-one</module>
+-        <module>function-two</module>
+-    </modules>
+-
+-    <packaging>pom</packaging>
+-    <name>demo</name>
+-    <description>parent project</description>
+-
+-    <!-- 本项目的父模块使用spring-boot框架 -->
+-    <parent>
+-        <groupId>org.springframework.boot</groupId>
+-        <artifactId>spring-boot-starter-parent</artifactId>
+-        <version>2.4.0</version>
+-    </parent>
+-
+-    <!-- 项目自定义属性 -->
+-    <properties>
+-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+-        <java.version>1.8</java.version>
+-        <!-- 依赖的版本号：在定义版本时，要注意的是不同的依赖版本之间会有影响，有些最新的版本不支持其他依赖的低版本一起使用-->
+-        <mysql.driver.version>5.1.29</mysql.driver.version>
+-        <org.mybatis.spring.boot.version>1.3.1</org.mybatis.spring.boot.version>
+-        <alibaba.druid.version>1.1.9</alibaba.druid.version>
+-        <spring.cloud.version>Edgware.SR1</spring.cloud.version>
+-        <basic.entity.version>1.0.0.2</basic.entity.version>
+-        <log4j.jdbc.version>1.2</log4j.jdbc.version>
+-    </properties>
+-
+-    <!-- 项目依赖项 -->
+-    <dependencyManagement>    <!-- dependencyManagement只是声明依赖，并不实现引入 -->
+-        <dependencies>
+-            <!-- Spring Cloud -->
+-            <dependency>
+-                <groupId>org.springframework.cloud</groupId>
+-                <artifactId>spring-cloud-dependencies</artifactId>
+-                <version>${spring.cloud.version}</version>
+-                <type>pom</type>
+-                <scope>import</scope>
+-            </dependency>
+-        </dependencies>
+-    </dependencyManagement>
+-
+-    <dependencies>
+-        <!-- Spring Boot -->
+-        <dependency>
+-            <groupId>org.springframework.boot</groupId>
+-            <artifactId>spring-boot-starter</artifactId>
+-            <version>2.0.2.RELEASE</version>
+-        </dependency>
+-        <dependency>
+-            <groupId>org.springframework.boot</groupId>
+-            <artifactId>spring-boot-starter-web</artifactId>
+-            <version>2.0.2.RELEASE</version>
+-        </dependency>
+-        <dependency>
+-            <groupId>org.springframework.boot</groupId>
+-            <artifactId>spring-boot-starter-test</artifactId>
+-            <scope>test</scope>
+-        </dependency>
+-        <!-- 添加junit4依赖 单元测试-->
+-        <dependency>
+-            <groupId>junit</groupId>
+-            <artifactId>junit</artifactId>
+-            <version>4.12</version>
+-            <scope>test</scope>
+-        </dependency>
+-        <!-- 切面 -->
+-<!--        <dependency>-->
+-<!--            <groupId>org.aspectj</groupId>-->
+-<!--            <artifactId>aspectjweaver</artifactId>-->
+-<!--            <version>1.8.8</version>-->
+-<!--        </dependency>-->
+-        <!-- 简化Entity代码（实体类添加@Data，编译时为所有字段添加@ToString/@EqualsAndHashCode/@Getter/为非final字段添加@Setter） -->
+-        <dependency>
+-            <groupId>org.projectlombok</groupId>
+-            <artifactId>lombok</artifactId>
+-            <version>1.16.20</version>
+-        </dependency>
+-        <dependency>
+-            <groupId>mysql</groupId>
+-            <artifactId>mysql-connector-java</artifactId>
+-            <scope>runtime</scope>
+-            <version>${mysql.driver.version}</version>
+-        </dependency>
+-        <!-- 添加数据库连接池依赖 -->
+-        <dependency>
+-            <groupId>com.alibaba</groupId>
+-            <artifactId>druid</artifactId>
+-            <version>${alibaba.druid.version}</version>
+-        </dependency>
+-        <!-- 实体基础类 -->
+-        <dependency>
+-            <groupId>com.hn</groupId>
+-            <artifactId>basic-entity</artifactId>
+-            <version>${basic.entity.version}</version>
+-        </dependency>
+-        <!-- Log4j 日志 -->
+-        <dependency>
+-            <groupId>com.googlecode.log4jdbc</groupId>
+-            <artifactId>log4jdbc</artifactId>
+-            <version>${log4j.jdbc.version}</version>
+-        </dependency>
+-        <!-- mybatis-plus SpringBoot整合 -->
+-        <dependency>
+-            <groupId>com.baomidou</groupId>
+-            <artifactId>mybatis-plus-boot-starter</artifactId>
+-            <version>3.3.1</version>
+-        </dependency>
+-        <!-- 数据处理工具 -->
+-        <dependency>
+-            <groupId>com.hn</groupId>
+-            <artifactId>basic-util</artifactId>
+-            <version>1.0.0.1</version>
+-        </dependency>
+-        <dependency>
+-            <groupId>com.hn</groupId>
+-            <artifactId>hutool-all</artifactId>
+-            <version>4.1.5</version>
+-        </dependency>
+-        <!-- knife4j API增强版 -->
+-        <dependency>
+-            <groupId>com.github.xiaoymin</groupId>
+-            <artifactId>knife4j-spring-boot-starter</artifactId>
+-            <version>2.0.7</version>
+-        </dependency>
+-        <dependency>
+-            <groupId>org.springframework.boot</groupId>
+-            <artifactId>spring-boot-starter-test</artifactId>
+-            <scope>test</scope>
+-            <exclusions>
+-                <exclusion>
+-                    <groupId>org.junit.vintage</groupId>
+-                    <artifactId>junit-vintage-engine</artifactId>
+-                </exclusion>
+-            </exclusions>
+-        </dependency>
+-    </dependencies>
+-    <!-- <scope>主要管理依赖的部署
+-       * compile，缺省值，适用于所有阶段，会随着项目一起发布。
+-       * provided，类似compile，期望JDK、容器或使用者会提供这个依赖。如servlet.jar。
+-       * runtime，只在运行时使用，如JDBC驱动，适用运行和测试阶段。
+-       * test，只在测试时使用，用于编译和运行测试代码。不会随项目发布。
+-       * system，类似provided，需要显式提供包含依赖的jar，Maven不会在Repository中查找它。
+-    -->
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
++	<modelVersion>4.0.0</modelVersion>
++	<parent>
++		<groupId>org.springframework.boot</groupId>
++		<artifactId>spring-boot-starter-parent</artifactId>
++		<version>2.4.5</version>
++		<relativePath/> <!-- lookup parent from repository -->
++	</parent>
++	<groupId>function</groupId>
++	<artifactId>gateway</artifactId>
++	<version>0.0.1-SNAPSHOT</version>
++	<name>gateway</name>
++	<description>Demo project for Spring Boot</description>
++	<properties>
++		<java.version>1.8</java.version>
++	</properties>
++	<dependencies>
++		<dependency>
++			<groupId>org.springframework.boot</groupId>
++			<artifactId>spring-boot-starter</artifactId>
++		</dependency>
++
++		<dependency>
++			<groupId>org.springframework.boot</groupId>
++			<artifactId>spring-boot-starter-test</artifactId>
++			<scope>test</scope>
++		</dependency>
++	</dependencies>
+ 
+-    <build>
+-        <plugins>
+-            <!--打包跳过测试-->
+-            <plugin>
+-                <groupId>org.apache.maven.plugins</groupId>
+-                <artifactId>maven-surefire-plugin</artifactId>
+-                <configuration>
+-                    <skip>true</skip>
+-                </configuration>
+-            </plugin>
+-        </plugins>
+-    </build>
++	<build>
++		<plugins>
++			<plugin>
++				<groupId>org.springframework.boot</groupId>
++				<artifactId>spring-boot-maven-plugin</artifactId>
++			</plugin>
++		</plugins>
++	</build>
+ 
+-</project>
+\ No newline at end of file
++</project>
+Index: hnparent/common/src/main/java/com/hengnan/controller/TestController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hengnan.controller;\r\n\r\nimport com.hengnan.base.BaseResponse;\r\nimport org.springframework.web.bind.annotation.GetMapping;\r\nimport org.springframework.web.bind.annotation.RequestMapping;\r\nimport org.springframework.web.bind.annotation.RestController;\r\n\r\n/**\r\n * @description:\r\n * @author: leozhu\r\n * @create: 2021/4/21\r\n **/\r\n@RestController\r\n@RequestMapping(\"test\")\r\npublic class TestController {\r\n\r\n    @GetMapping(\"/getInfo\")\r\n    public BaseResponse getInfo(){\r\n        return BaseResponse.success(\"this is common\");\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/common/src/main/java/com/hengnan/controller/TestController.java	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/common/src/main/java/com/hengnan/controller/TestController.java	(date 1619055973326)
+@@ -15,7 +15,7 @@
+ public class TestController {
+ 
+     @GetMapping("/getInfo")
+-    public BaseResponse getInfo(){
++    public BaseResponse getInfo() {
+         return BaseResponse.success("this is common");
+     }
+ 
+Index: hnparent/function-one/src/main/java/com/hengnan/controller/LoginController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hengnan.controller;\r\n\r\n\r\nimport com.hengnan.base.BaseResponse;\r\nimport com.hengnan.base.PassToken;\r\nimport com.hengnan.entity.UserAdmin;\r\nimport com.hengnan.entity.enums.MessageEnum;\r\nimport com.hengnan.service.TokenService;\r\nimport com.hengnan.service.UserAdminService;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.web.bind.annotation.*;\r\n\r\nimport java.util.Objects;\r\n\r\n@RestController\r\n@RequestMapping(\"api\")\r\npublic class LoginController {\r\n    @Autowired\r\n    private UserAdminService userService;\r\n    @Autowired\r\n    private TokenService tokenService;\r\n\r\n    //登录\r\n    @PassToken\r\n    @PostMapping(\"/login\")\r\n    public BaseResponse login(@RequestBody UserAdmin user) {\r\n        UserAdmin userInfo = userService.findByLoginId(user.getLoginId());\r\n        if (Objects.isNull(userInfo)) {\r\n            return BaseResponse.fail(MessageEnum.ERR_USER_NAME.value(),MessageEnum.ERR_USER_NAME.title());\r\n        }\r\n        if (!Objects.equals(userInfo.getPassWord(),user.getPassWord())) {\r\n            return BaseResponse.fail(MessageEnum.ERR_USER_PASSWORD.value(),MessageEnum.ERR_USER_PASSWORD.title());\r\n        }\r\n        String token = tokenService.getToken(userInfo);\r\n        userInfo.setToken(token);\r\n        return BaseResponse.success(userInfo);\r\n    }\r\n\r\n\r\n    @GetMapping(\"/getMessage\")\r\n    public String getMessage() {\r\n        return \"你已通过验证\";\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/function-one/src/main/java/com/hengnan/controller/LoginController.java	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/function-one/src/main/java/com/hengnan/controller/LoginController.java	(date 1619055973802)
+@@ -26,10 +26,10 @@
+     public BaseResponse login(@RequestBody UserAdmin user) {
+         UserAdmin userInfo = userService.findByLoginId(user.getLoginId());
+         if (Objects.isNull(userInfo)) {
+-            return BaseResponse.fail(MessageEnum.ERR_USER_NAME.value(),MessageEnum.ERR_USER_NAME.title());
++            return BaseResponse.fail(MessageEnum.ERR_USER_NAME.value(), MessageEnum.ERR_USER_NAME.title());
+         }
+-        if (!Objects.equals(userInfo.getPassWord(),user.getPassWord())) {
+-            return BaseResponse.fail(MessageEnum.ERR_USER_PASSWORD.value(),MessageEnum.ERR_USER_PASSWORD.title());
++        if (!Objects.equals(userInfo.getPassWord(), user.getPassWord())) {
++            return BaseResponse.fail(MessageEnum.ERR_USER_PASSWORD.value(), MessageEnum.ERR_USER_PASSWORD.title());
+         }
+         String token = tokenService.getToken(userInfo);
+         userInfo.setToken(token);
+Index: hnparent/common/src/main/resources/mapper/UserMapper.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\"\r\n        \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\">\r\n<mapper namespace=\"com.hengnan.mapper.UserMapper\">\r\n    <resultMap id=\"BaseResultMap\" type=\"com.hengnan.entity.User\">\r\n        <id column=\"id\" jdbcType=\"INTEGER\" property=\"id\" />\r\n        <result column=\"name\" jdbcType=\"VARCHAR\" property=\"name\" />\r\n        <result column=\"age\" jdbcType=\"INTEGER\" property=\"age\" />\r\n    </resultMap>\r\n\r\n    <select id=\"getUserById\" resultType=\"com.hengnan.entity.User\">\r\n         SELECT *\r\n         FROM user\r\n         WHERE id = #{id}\r\n    </select>\r\n\r\n    <select id=\"getUserList\" resultType=\"com.hengnan.entity.User\">\r\n        select * from user\r\n    </select>\r\n\r\n</mapper>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/common/src/main/resources/mapper/UserMapper.xml	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/common/src/main/resources/mapper/UserMapper.xml	(date 1619055973765)
+@@ -3,15 +3,15 @@
+         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.hengnan.mapper.UserMapper">
+     <resultMap id="BaseResultMap" type="com.hengnan.entity.User">
+-        <id column="id" jdbcType="INTEGER" property="id" />
+-        <result column="name" jdbcType="VARCHAR" property="name" />
+-        <result column="age" jdbcType="INTEGER" property="age" />
++        <id column="id" jdbcType="INTEGER" property="id"/>
++        <result column="name" jdbcType="VARCHAR" property="name"/>
++        <result column="age" jdbcType="INTEGER" property="age"/>
+     </resultMap>
+ 
+     <select id="getUserById" resultType="com.hengnan.entity.User">
+-         SELECT *
+-         FROM user
+-         WHERE id = #{id}
++        SELECT *
++        FROM user
++        WHERE id = #{id}
+     </select>
+ 
+     <select id="getUserList" resultType="com.hengnan.entity.User">
+Index: hnparent/function-one/src/main/java/com/hengnan/core/GlobalExceptionAdvice.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hengnan.core;\r\n\r\n\r\nimport com.hengnan.core.configuration.ExceptionCodeConfiguration;\r\nimport com.hengnan.core.exception.http.HttpException;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.http.HttpHeaders;\r\nimport org.springframework.http.HttpStatus;\r\nimport org.springframework.http.MediaType;\r\nimport org.springframework.http.ResponseEntity;\r\nimport org.springframework.validation.ObjectError;\r\nimport org.springframework.web.bind.MethodArgumentNotValidException;\r\nimport org.springframework.web.bind.annotation.ControllerAdvice;\r\nimport org.springframework.web.bind.annotation.ExceptionHandler;\r\nimport org.springframework.web.bind.annotation.ResponseBody;\r\nimport org.springframework.web.bind.annotation.ResponseStatus;\r\n\r\nimport javax.servlet.http.HttpServletRequest;\r\nimport javax.validation.ConstraintViolationException;\r\nimport java.util.List;\r\n\r\n/**\r\n * @description: 全局异常处理\r\n * @author: leozhu\r\n * @create: 2020-09-23 23:25\r\n **/\r\n@ControllerAdvice\r\npublic class GlobalExceptionAdvice {\r\n\r\n    @Autowired\r\n    private ExceptionCodeConfiguration codeConfiguration;\r\n\r\n    /**\r\n     * 捕获通用类异常\r\n     * @param req\r\n     * @param e\r\n     * @return\r\n     */\r\n    @ExceptionHandler(Exception.class)\r\n    @ResponseBody\r\n    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)\r\n    public UnifyResponse handleException(HttpServletRequest req,Exception e){\r\n        String requestUrl = req.getRequestURI();\r\n        String method = req.getMethod();\r\n//        String msg = String.valueOf(e).substring(String.valueOf(e).indexOf(\":\")+2);\r\n        System.out.println(e);\r\n        UnifyResponse unifyResponse = new UnifyResponse(1111,\"服务器异常\",method +\" \"+requestUrl);\r\n        return unifyResponse;\r\n    }\r\n\r\n    /**\r\n     * 捕获HTTP异常\r\n     * @param req\r\n     * @param e\r\n     * @return\r\n     */\r\n    @ExceptionHandler(HttpException.class)\r\n    public ResponseEntity<UnifyResponse> handleHttpException(HttpServletRequest req, HttpException e){\r\n        String requestUrl = req.getRequestURI();\r\n        String method = req.getMethod();\r\n        UnifyResponse message = new UnifyResponse(e.getCode(),codeConfiguration.getMessage(e.getCode()),method +\" \"+requestUrl);\r\n        HttpHeaders headers = new HttpHeaders();\r\n        headers.setContentType(MediaType.APPLICATION_JSON);\r\n        HttpStatus httpStatus = HttpStatus.resolve(e.getHttpStatusCode());\r\n        ResponseEntity<UnifyResponse> responseEntity = new ResponseEntity<UnifyResponse>(message,headers,httpStatus);\r\n        return responseEntity;\r\n    }\r\n\r\n\r\n    @ExceptionHandler(MethodArgumentNotValidException.class)\r\n    @ResponseBody\r\n    @ResponseStatus(HttpStatus.BAD_REQUEST)\r\n    public UnifyResponse handleMethodArgumentNotValidException(HttpServletRequest req,MethodArgumentNotValidException e){\r\n        String requestUrl = req.getRequestURI();\r\n        String method = req.getMethod();\r\n        List<ObjectError> allErrors = e.getBindingResult().getAllErrors();\r\n        String msg = this.getMsg(allErrors);\r\n        return new UnifyResponse(10001,msg,method +\" \"+requestUrl);\r\n    }\r\n\r\n    @ExceptionHandler(ConstraintViolationException.class)\r\n    @ResponseStatus(HttpStatus.BAD_REQUEST)\r\n    @ResponseBody\r\n    public UnifyResponse handleConstraintViolationException(HttpServletRequest req,ConstraintViolationException e){\r\n        String requestUrl = req.getRequestURI();\r\n        String method = req.getMethod();\r\n        String message = e.getMessage();\r\n        return new UnifyResponse(10001,message,method +\" \"+requestUrl);\r\n//        for (ConstraintViolation error : e.getConstraintViolations()) {\r\n//            ConstraintViolation a = error;\r\n//        }\r\n    }\r\n\r\n    public String getMsg(List<ObjectError> errors){\r\n        StringBuilder messageSbr = new StringBuilder();\r\n        errors.forEach(err->{\r\n            messageSbr.append(err.getDefaultMessage()).append(\";\");\r\n        });\r\n        return messageSbr.toString();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/function-one/src/main/java/com/hengnan/core/GlobalExceptionAdvice.java	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/function-one/src/main/java/com/hengnan/core/GlobalExceptionAdvice.java	(date 1619055973697)
+@@ -32,6 +32,7 @@
+ 
+     /**
+      * 捕获通用类异常
++     *
+      * @param req
+      * @param e
+      * @return
+@@ -39,30 +40,31 @@
+     @ExceptionHandler(Exception.class)
+     @ResponseBody
+     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+-    public UnifyResponse handleException(HttpServletRequest req,Exception e){
++    public UnifyResponse handleException(HttpServletRequest req, Exception e) {
+         String requestUrl = req.getRequestURI();
+         String method = req.getMethod();
+ //        String msg = String.valueOf(e).substring(String.valueOf(e).indexOf(":")+2);
+         System.out.println(e);
+-        UnifyResponse unifyResponse = new UnifyResponse(1111,"服务器异常",method +" "+requestUrl);
++        UnifyResponse unifyResponse = new UnifyResponse(1111, "服务器异常", method + " " + requestUrl);
+         return unifyResponse;
+     }
+ 
+     /**
+      * 捕获HTTP异常
++     *
+      * @param req
+      * @param e
+      * @return
+      */
+     @ExceptionHandler(HttpException.class)
+-    public ResponseEntity<UnifyResponse> handleHttpException(HttpServletRequest req, HttpException e){
++    public ResponseEntity<UnifyResponse> handleHttpException(HttpServletRequest req, HttpException e) {
+         String requestUrl = req.getRequestURI();
+         String method = req.getMethod();
+-        UnifyResponse message = new UnifyResponse(e.getCode(),codeConfiguration.getMessage(e.getCode()),method +" "+requestUrl);
++        UnifyResponse message = new UnifyResponse(e.getCode(), codeConfiguration.getMessage(e.getCode()), method + " " + requestUrl);
+         HttpHeaders headers = new HttpHeaders();
+         headers.setContentType(MediaType.APPLICATION_JSON);
+         HttpStatus httpStatus = HttpStatus.resolve(e.getHttpStatusCode());
+-        ResponseEntity<UnifyResponse> responseEntity = new ResponseEntity<UnifyResponse>(message,headers,httpStatus);
++        ResponseEntity<UnifyResponse> responseEntity = new ResponseEntity<UnifyResponse>(message, headers, httpStatus);
+         return responseEntity;
+     }
+ 
+@@ -70,30 +72,30 @@
+     @ExceptionHandler(MethodArgumentNotValidException.class)
+     @ResponseBody
+     @ResponseStatus(HttpStatus.BAD_REQUEST)
+-    public UnifyResponse handleMethodArgumentNotValidException(HttpServletRequest req,MethodArgumentNotValidException e){
++    public UnifyResponse handleMethodArgumentNotValidException(HttpServletRequest req, MethodArgumentNotValidException e) {
+         String requestUrl = req.getRequestURI();
+         String method = req.getMethod();
+         List<ObjectError> allErrors = e.getBindingResult().getAllErrors();
+         String msg = this.getMsg(allErrors);
+-        return new UnifyResponse(10001,msg,method +" "+requestUrl);
++        return new UnifyResponse(10001, msg, method + " " + requestUrl);
+     }
+ 
+     @ExceptionHandler(ConstraintViolationException.class)
+     @ResponseStatus(HttpStatus.BAD_REQUEST)
+     @ResponseBody
+-    public UnifyResponse handleConstraintViolationException(HttpServletRequest req,ConstraintViolationException e){
++    public UnifyResponse handleConstraintViolationException(HttpServletRequest req, ConstraintViolationException e) {
+         String requestUrl = req.getRequestURI();
+         String method = req.getMethod();
+         String message = e.getMessage();
+-        return new UnifyResponse(10001,message,method +" "+requestUrl);
++        return new UnifyResponse(10001, message, method + " " + requestUrl);
+ //        for (ConstraintViolation error : e.getConstraintViolations()) {
+ //            ConstraintViolation a = error;
+ //        }
+     }
+ 
+-    public String getMsg(List<ObjectError> errors){
++    public String getMsg(List<ObjectError> errors) {
+         StringBuilder messageSbr = new StringBuilder();
+-        errors.forEach(err->{
++        errors.forEach(err -> {
+             messageSbr.append(err.getDefaultMessage()).append(";");
+         });
+         return messageSbr.toString();
+Index: hnparent/mvnw.cmd
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/mvnw.cmd	(date 1619055972712)
++++ hnparent/mvnw.cmd	(date 1619055972712)
+@@ -0,0 +1,182 @@
++@REM ----------------------------------------------------------------------------
++@REM Licensed to the Apache Software Foundation (ASF) under one
++@REM or more contributor license agreements.  See the NOTICE file
++@REM distributed with this work for additional information
++@REM regarding copyright ownership.  The ASF licenses this file
++@REM to you under the Apache License, Version 2.0 (the
++@REM "License"); you may not use this file except in compliance
++@REM with the License.  You may obtain a copy of the License at
++@REM
++@REM    https://www.apache.org/licenses/LICENSE-2.0
++@REM
++@REM Unless required by applicable law or agreed to in writing,
++@REM software distributed under the License is distributed on an
++@REM "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
++@REM KIND, either express or implied.  See the License for the
++@REM specific language governing permissions and limitations
++@REM under the License.
++@REM ----------------------------------------------------------------------------
++
++@REM ----------------------------------------------------------------------------
++@REM Maven Start Up Batch script
++@REM
++@REM Required ENV vars:
++@REM JAVA_HOME - location of a JDK home dir
++@REM
++@REM Optional ENV vars
++@REM M2_HOME - location of maven2's installed home dir
++@REM MAVEN_BATCH_ECHO - set to 'on' to enable the echoing of the batch commands
++@REM MAVEN_BATCH_PAUSE - set to 'on' to wait for a keystroke before ending
++@REM MAVEN_OPTS - parameters passed to the Java VM when running Maven
++@REM     e.g. to debug Maven itself, use
++@REM set MAVEN_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000
++@REM MAVEN_SKIP_RC - flag to disable loading of mavenrc files
++@REM ----------------------------------------------------------------------------
++
++@REM Begin all REM lines with '@' in case MAVEN_BATCH_ECHO is 'on'
++@echo off
++@REM set title of command window
++title %0
++@REM enable echoing by setting MAVEN_BATCH_ECHO to 'on'
++@if "%MAVEN_BATCH_ECHO%" == "on"  echo %MAVEN_BATCH_ECHO%
++
++@REM set %HOME% to equivalent of $HOME
++if "%HOME%" == "" (set "HOME=%HOMEDRIVE%%HOMEPATH%")
++
++@REM Execute a user defined script before this one
++if not "%MAVEN_SKIP_RC%" == "" goto skipRcPre
++@REM check for pre script, once with legacy .bat ending and once with .cmd ending
++if exist "%HOME%\mavenrc_pre.bat" call "%HOME%\mavenrc_pre.bat"
++if exist "%HOME%\mavenrc_pre.cmd" call "%HOME%\mavenrc_pre.cmd"
++:skipRcPre
++
++@setlocal
++
++set ERROR_CODE=0
++
++@REM To isolate internal variables from possible post scripts, we use another setlocal
++@setlocal
++
++@REM ==== START VALIDATION ====
++if not "%JAVA_HOME%" == "" goto OkJHome
++
++echo.
++echo Error: JAVA_HOME not found in your environment. >&2
++echo Please set the JAVA_HOME variable in your environment to match the >&2
++echo location of your Java installation. >&2
++echo.
++goto error
++
++:OkJHome
++if exist "%JAVA_HOME%\bin\java.exe" goto init
++
++echo.
++echo Error: JAVA_HOME is set to an invalid directory. >&2
++echo JAVA_HOME = "%JAVA_HOME%" >&2
++echo Please set the JAVA_HOME variable in your environment to match the >&2
++echo location of your Java installation. >&2
++echo.
++goto error
++
++@REM ==== END VALIDATION ====
++
++:init
++
++@REM Find the project base dir, i.e. the directory that contains the folder ".mvn".
++@REM Fallback to current working directory if not found.
++
++set MAVEN_PROJECTBASEDIR=%MAVEN_BASEDIR%
++IF NOT "%MAVEN_PROJECTBASEDIR%"=="" goto endDetectBaseDir
++
++set EXEC_DIR=%CD%
++set WDIR=%EXEC_DIR%
++:findBaseDir
++IF EXIST "%WDIR%"\.mvn goto baseDirFound
++cd ..
++IF "%WDIR%"=="%CD%" goto baseDirNotFound
++set WDIR=%CD%
++goto findBaseDir
++
++:baseDirFound
++set MAVEN_PROJECTBASEDIR=%WDIR%
++cd "%EXEC_DIR%"
++goto endDetectBaseDir
++
++:baseDirNotFound
++set MAVEN_PROJECTBASEDIR=%EXEC_DIR%
++cd "%EXEC_DIR%"
++
++:endDetectBaseDir
++
++IF NOT EXIST "%MAVEN_PROJECTBASEDIR%\.mvn\jvm.config" goto endReadAdditionalConfig
++
++@setlocal EnableExtensions EnableDelayedExpansion
++for /F "usebackq delims=" %%a in ("%MAVEN_PROJECTBASEDIR%\.mvn\jvm.config") do set JVM_CONFIG_MAVEN_PROPS=!JVM_CONFIG_MAVEN_PROPS! %%a
++@endlocal & set JVM_CONFIG_MAVEN_PROPS=%JVM_CONFIG_MAVEN_PROPS%
++
++:endReadAdditionalConfig
++
++SET MAVEN_JAVA_EXE="%JAVA_HOME%\bin\java.exe"
++set WRAPPER_JAR="%MAVEN_PROJECTBASEDIR%\.mvn\wrapper\maven-wrapper.jar"
++set WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
++
++set DOWNLOAD_URL="https://repo.maven.apache.org/maven2/io/takari/maven-wrapper/0.5.6/maven-wrapper-0.5.6.jar"
++
++FOR /F "tokens=1,2 delims==" %%A IN ("%MAVEN_PROJECTBASEDIR%\.mvn\wrapper\maven-wrapper.properties") DO (
++    IF "%%A"=="wrapperUrl" SET DOWNLOAD_URL=%%B
++)
++
++@REM Extension to allow automatically downloading the maven-wrapper.jar from Maven-central
++@REM This allows using the maven wrapper in projects that prohibit checking in binary data.
++if exist %WRAPPER_JAR% (
++    if "%MVNW_VERBOSE%" == "true" (
++        echo Found %WRAPPER_JAR%
++    )
++) else (
++    if not "%MVNW_REPOURL%" == "" (
++        SET DOWNLOAD_URL="%MVNW_REPOURL%/io/takari/maven-wrapper/0.5.6/maven-wrapper-0.5.6.jar"
++    )
++    if "%MVNW_VERBOSE%" == "true" (
++        echo Couldn't find %WRAPPER_JAR%, downloading it ...
++        echo Downloading from: %DOWNLOAD_URL%
++    )
++
++    powershell -Command "&{"^
++		"$webclient = new-object System.Net.WebClient;"^
++		"if (-not ([string]::IsNullOrEmpty('%MVNW_USERNAME%') -and [string]::IsNullOrEmpty('%MVNW_PASSWORD%'))) {"^
++		"$webclient.Credentials = new-object System.Net.NetworkCredential('%MVNW_USERNAME%', '%MVNW_PASSWORD%');"^
++		"}"^
++		"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $webclient.DownloadFile('%DOWNLOAD_URL%', '%WRAPPER_JAR%')"^
++		"}"
++    if "%MVNW_VERBOSE%" == "true" (
++        echo Finished downloading %WRAPPER_JAR%
++    )
++)
++@REM End of extension
++
++@REM Provide a "standardized" way to retrieve the CLI args that will
++@REM work with both Windows and non-Windows executions.
++set MAVEN_CMD_LINE_ARGS=%*
++
++%MAVEN_JAVA_EXE% %JVM_CONFIG_MAVEN_PROPS% %MAVEN_OPTS% %MAVEN_DEBUG_OPTS% -classpath %WRAPPER_JAR% "-Dmaven.multiModuleProjectDirectory=%MAVEN_PROJECTBASEDIR%" %WRAPPER_LAUNCHER% %MAVEN_CONFIG% %*
++if ERRORLEVEL 1 goto error
++goto end
++
++:error
++set ERROR_CODE=1
++
++:end
++@endlocal & set ERROR_CODE=%ERROR_CODE%
++
++if not "%MAVEN_SKIP_RC%" == "" goto skipRcPost
++@REM check for post script, once with legacy .bat ending and once with .cmd ending
++if exist "%HOME%\mavenrc_post.bat" call "%HOME%\mavenrc_post.bat"
++if exist "%HOME%\mavenrc_post.cmd" call "%HOME%\mavenrc_post.cmd"
++:skipRcPost
++
++@REM pause the script if MAVEN_BATCH_PAUSE is set to 'on'
++if "%MAVEN_BATCH_PAUSE%" == "on" pause
++
++if "%MAVEN_TERMINATE_CMD%" == "on" exit %ERROR_CODE%
++
++exit /B %ERROR_CODE%
+Index: hnparent/.mvn/wrapper/maven-wrapper.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>NATIVE_TO_ASCII_UTF-8
+===================================================================
+--- hnparent/.mvn/wrapper/maven-wrapper.properties	(date 1619055972719)
++++ hnparent/.mvn/wrapper/maven-wrapper.properties	(date 1619055972719)
+@@ -0,0 +1,2 @@
++distributionUrl=https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.8.1/apache-maven-3.8.1-bin.zip
++wrapperUrl=https://repo.maven.apache.org/maven2/io/takari/maven-wrapper/0.5.6/maven-wrapper-0.5.6.jar
+Index: hnparent/.mvn/wrapper/MavenWrapperDownloader.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/.mvn/wrapper/MavenWrapperDownloader.java	(date 1619055972717)
++++ hnparent/.mvn/wrapper/MavenWrapperDownloader.java	(date 1619055972717)
+@@ -0,0 +1,117 @@
++/*
++ * Copyright 2007-present the original author or authors.
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *      https://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++import java.net.*;
++import java.io.*;
++import java.nio.channels.*;
++import java.util.Properties;
++
++public class MavenWrapperDownloader {
++
++    private static final String WRAPPER_VERSION = "0.5.6";
++    /**
++     * Default URL to download the maven-wrapper.jar from, if no 'downloadUrl' is provided.
++     */
++    private static final String DEFAULT_DOWNLOAD_URL = "https://repo.maven.apache.org/maven2/io/takari/maven-wrapper/"
++        + WRAPPER_VERSION + "/maven-wrapper-" + WRAPPER_VERSION + ".jar";
++
++    /**
++     * Path to the maven-wrapper.properties file, which might contain a downloadUrl property to
++     * use instead of the default one.
++     */
++    private static final String MAVEN_WRAPPER_PROPERTIES_PATH =
++            ".mvn/wrapper/maven-wrapper.properties";
++
++    /**
++     * Path where the maven-wrapper.jar will be saved to.
++     */
++    private static final String MAVEN_WRAPPER_JAR_PATH =
++            ".mvn/wrapper/maven-wrapper.jar";
++
++    /**
++     * Name of the property which should be used to override the default download url for the wrapper.
++     */
++    private static final String PROPERTY_NAME_WRAPPER_URL = "wrapperUrl";
++
++    public static void main(String args[]) {
++        System.out.println("- Downloader started");
++        File baseDirectory = new File(args[0]);
++        System.out.println("- Using base directory: " + baseDirectory.getAbsolutePath());
++
++        // If the maven-wrapper.properties exists, read it and check if it contains a custom
++        // wrapperUrl parameter.
++        File mavenWrapperPropertyFile = new File(baseDirectory, MAVEN_WRAPPER_PROPERTIES_PATH);
++        String url = DEFAULT_DOWNLOAD_URL;
++        if(mavenWrapperPropertyFile.exists()) {
++            FileInputStream mavenWrapperPropertyFileInputStream = null;
++            try {
++                mavenWrapperPropertyFileInputStream = new FileInputStream(mavenWrapperPropertyFile);
++                Properties mavenWrapperProperties = new Properties();
++                mavenWrapperProperties.load(mavenWrapperPropertyFileInputStream);
++                url = mavenWrapperProperties.getProperty(PROPERTY_NAME_WRAPPER_URL, url);
++            } catch (IOException e) {
++                System.out.println("- ERROR loading '" + MAVEN_WRAPPER_PROPERTIES_PATH + "'");
++            } finally {
++                try {
++                    if(mavenWrapperPropertyFileInputStream != null) {
++                        mavenWrapperPropertyFileInputStream.close();
++                    }
++                } catch (IOException e) {
++                    // Ignore ...
++                }
++            }
++        }
++        System.out.println("- Downloading from: " + url);
++
++        File outputFile = new File(baseDirectory.getAbsolutePath(), MAVEN_WRAPPER_JAR_PATH);
++        if(!outputFile.getParentFile().exists()) {
++            if(!outputFile.getParentFile().mkdirs()) {
++                System.out.println(
++                        "- ERROR creating output directory '" + outputFile.getParentFile().getAbsolutePath() + "'");
++            }
++        }
++        System.out.println("- Downloading to: " + outputFile.getAbsolutePath());
++        try {
++            downloadFileFromURL(url, outputFile);
++            System.out.println("Done");
++            System.exit(0);
++        } catch (Throwable e) {
++            System.out.println("- Error downloading");
++            e.printStackTrace();
++            System.exit(1);
++        }
++    }
++
++    private static void downloadFileFromURL(String urlString, File destination) throws Exception {
++        if (System.getenv("MVNW_USERNAME") != null && System.getenv("MVNW_PASSWORD") != null) {
++            String username = System.getenv("MVNW_USERNAME");
++            char[] password = System.getenv("MVNW_PASSWORD").toCharArray();
++            Authenticator.setDefault(new Authenticator() {
++                @Override
++                protected PasswordAuthentication getPasswordAuthentication() {
++                    return new PasswordAuthentication(username, password);
++                }
++            });
++        }
++        URL website = new URL(urlString);
++        ReadableByteChannel rbc;
++        rbc = Channels.newChannel(website.openStream());
++        FileOutputStream fos = new FileOutputStream(destination);
++        fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
++        fos.close();
++        rbc.close();
++    }
++
++}
+Index: hnparent/function-one/src/main/java/com/hengnan/core/configuration/ExceptionCodeConfiguration.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hengnan.core.configuration;\r\n\r\nimport org.springframework.boot.context.properties.ConfigurationProperties;\r\nimport org.springframework.context.annotation.PropertySource;\r\nimport org.springframework.stereotype.Component;\r\n\r\nimport java.util.HashMap;\r\nimport java.util.Map;\r\n\r\n/**\r\n * @description: 异常配置类\r\n * @author: leozhu\r\n * @create: 2020-09-28 23:16\r\n **/\r\n@ConfigurationProperties(prefix = \"hengnan\")\r\n@PropertySource(value = {\"classpath:config/exception-code.properties\"},encoding = \"utf-8\")\r\n@Component\r\npublic class ExceptionCodeConfiguration {\r\n\r\n    private Map<Integer,String> codes = new HashMap<>();\r\n\r\n    public Map<Integer, String> getCodes() {\r\n        return codes;\r\n    }\r\n\r\n    public void setCodes(Map<Integer, String> codes) {\r\n        this.codes = codes;\r\n    }\r\n\r\n    public String getMessage(int code){\r\n        String message = codes.get(code);\r\n        return message;\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/function-one/src/main/java/com/hengnan/core/configuration/ExceptionCodeConfiguration.java	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/function-one/src/main/java/com/hengnan/core/configuration/ExceptionCodeConfiguration.java	(date 1619055974347)
+@@ -13,11 +13,11 @@
+  * @create: 2020-09-28 23:16
+  **/
+ @ConfigurationProperties(prefix = "hengnan")
+-@PropertySource(value = {"classpath:config/exception-code.properties"},encoding = "utf-8")
++@PropertySource(value = {"classpath:config/exception-code.properties"}, encoding = "utf-8")
+ @Component
+ public class ExceptionCodeConfiguration {
+ 
+-    private Map<Integer,String> codes = new HashMap<>();
++    private Map<Integer, String> codes = new HashMap<>();
+ 
+     public Map<Integer, String> getCodes() {
+         return codes;
+@@ -27,7 +27,7 @@
+         this.codes = codes;
+     }
+ 
+-    public String getMessage(int code){
++    public String getMessage(int code) {
+         String message = codes.get(code);
+         return message;
+     }
+Index: hnparent/mvnw
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/mvnw	(date 1619055972666)
++++ hnparent/mvnw	(date 1619055972666)
+@@ -0,0 +1,310 @@
++#!/bin/sh
++# ----------------------------------------------------------------------------
++# Licensed to the Apache Software Foundation (ASF) under one
++# or more contributor license agreements.  See the NOTICE file
++# distributed with this work for additional information
++# regarding copyright ownership.  The ASF licenses this file
++# to you under the Apache License, Version 2.0 (the
++# "License"); you may not use this file except in compliance
++# with the License.  You may obtain a copy of the License at
++#
++#    https://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing,
++# software distributed under the License is distributed on an
++# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
++# KIND, either express or implied.  See the License for the
++# specific language governing permissions and limitations
++# under the License.
++# ----------------------------------------------------------------------------
++
++# ----------------------------------------------------------------------------
++# Maven Start Up Batch script
++#
++# Required ENV vars:
++# ------------------
++#   JAVA_HOME - location of a JDK home dir
++#
++# Optional ENV vars
++# -----------------
++#   M2_HOME - location of maven2's installed home dir
++#   MAVEN_OPTS - parameters passed to the Java VM when running Maven
++#     e.g. to debug Maven itself, use
++#       set MAVEN_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000
++#   MAVEN_SKIP_RC - flag to disable loading of mavenrc files
++# ----------------------------------------------------------------------------
++
++if [ -z "$MAVEN_SKIP_RC" ] ; then
++
++  if [ -f /etc/mavenrc ] ; then
++    . /etc/mavenrc
++  fi
++
++  if [ -f "$HOME/.mavenrc" ] ; then
++    . "$HOME/.mavenrc"
++  fi
++
++fi
++
++# OS specific support.  $var _must_ be set to either true or false.
++cygwin=false;
++darwin=false;
++mingw=false
++case "`uname`" in
++  CYGWIN*) cygwin=true ;;
++  MINGW*) mingw=true;;
++  Darwin*) darwin=true
++    # Use /usr/libexec/java_home if available, otherwise fall back to /Library/Java/Home
++    # See https://developer.apple.com/library/mac/qa/qa1170/_index.html
++    if [ -z "$JAVA_HOME" ]; then
++      if [ -x "/usr/libexec/java_home" ]; then
++        export JAVA_HOME="`/usr/libexec/java_home`"
++      else
++        export JAVA_HOME="/Library/Java/Home"
++      fi
++    fi
++    ;;
++esac
++
++if [ -z "$JAVA_HOME" ] ; then
++  if [ -r /etc/gentoo-release ] ; then
++    JAVA_HOME=`java-config --jre-home`
++  fi
++fi
++
++if [ -z "$M2_HOME" ] ; then
++  ## resolve links - $0 may be a link to maven's home
++  PRG="$0"
++
++  # need this for relative symlinks
++  while [ -h "$PRG" ] ; do
++    ls=`ls -ld "$PRG"`
++    link=`expr "$ls" : '.*-> \(.*\)$'`
++    if expr "$link" : '/.*' > /dev/null; then
++      PRG="$link"
++    else
++      PRG="`dirname "$PRG"`/$link"
++    fi
++  done
++
++  saveddir=`pwd`
++
++  M2_HOME=`dirname "$PRG"`/..
++
++  # make it fully qualified
++  M2_HOME=`cd "$M2_HOME" && pwd`
++
++  cd "$saveddir"
++  # echo Using m2 at $M2_HOME
++fi
++
++# For Cygwin, ensure paths are in UNIX format before anything is touched
++if $cygwin ; then
++  [ -n "$M2_HOME" ] &&
++    M2_HOME=`cygpath --unix "$M2_HOME"`
++  [ -n "$JAVA_HOME" ] &&
++    JAVA_HOME=`cygpath --unix "$JAVA_HOME"`
++  [ -n "$CLASSPATH" ] &&
++    CLASSPATH=`cygpath --path --unix "$CLASSPATH"`
++fi
++
++# For Mingw, ensure paths are in UNIX format before anything is touched
++if $mingw ; then
++  [ -n "$M2_HOME" ] &&
++    M2_HOME="`(cd "$M2_HOME"; pwd)`"
++  [ -n "$JAVA_HOME" ] &&
++    JAVA_HOME="`(cd "$JAVA_HOME"; pwd)`"
++fi
++
++if [ -z "$JAVA_HOME" ]; then
++  javaExecutable="`which javac`"
++  if [ -n "$javaExecutable" ] && ! [ "`expr \"$javaExecutable\" : '\([^ ]*\)'`" = "no" ]; then
++    # readlink(1) is not available as standard on Solaris 10.
++    readLink=`which readlink`
++    if [ ! `expr "$readLink" : '\([^ ]*\)'` = "no" ]; then
++      if $darwin ; then
++        javaHome="`dirname \"$javaExecutable\"`"
++        javaExecutable="`cd \"$javaHome\" && pwd -P`/javac"
++      else
++        javaExecutable="`readlink -f \"$javaExecutable\"`"
++      fi
++      javaHome="`dirname \"$javaExecutable\"`"
++      javaHome=`expr "$javaHome" : '\(.*\)/bin'`
++      JAVA_HOME="$javaHome"
++      export JAVA_HOME
++    fi
++  fi
++fi
++
++if [ -z "$JAVACMD" ] ; then
++  if [ -n "$JAVA_HOME"  ] ; then
++    if [ -x "$JAVA_HOME/jre/sh/java" ] ; then
++      # IBM's JDK on AIX uses strange locations for the executables
++      JAVACMD="$JAVA_HOME/jre/sh/java"
++    else
++      JAVACMD="$JAVA_HOME/bin/java"
++    fi
++  else
++    JAVACMD="`which java`"
++  fi
++fi
++
++if [ ! -x "$JAVACMD" ] ; then
++  echo "Error: JAVA_HOME is not defined correctly." >&2
++  echo "  We cannot execute $JAVACMD" >&2
++  exit 1
++fi
++
++if [ -z "$JAVA_HOME" ] ; then
++  echo "Warning: JAVA_HOME environment variable is not set."
++fi
++
++CLASSWORLDS_LAUNCHER=org.codehaus.plexus.classworlds.launcher.Launcher
++
++# traverses directory structure from process work directory to filesystem root
++# first directory with .mvn subdirectory is considered project base directory
++find_maven_basedir() {
++
++  if [ -z "$1" ]
++  then
++    echo "Path not specified to find_maven_basedir"
++    return 1
++  fi
++
++  basedir="$1"
++  wdir="$1"
++  while [ "$wdir" != '/' ] ; do
++    if [ -d "$wdir"/.mvn ] ; then
++      basedir=$wdir
++      break
++    fi
++    # workaround for JBEAP-8937 (on Solaris 10/Sparc)
++    if [ -d "${wdir}" ]; then
++      wdir=`cd "$wdir/.."; pwd`
++    fi
++    # end of workaround
++  done
++  echo "${basedir}"
++}
++
++# concatenates all lines of a file
++concat_lines() {
++  if [ -f "$1" ]; then
++    echo "$(tr -s '\n' ' ' < "$1")"
++  fi
++}
++
++BASE_DIR=`find_maven_basedir "$(pwd)"`
++if [ -z "$BASE_DIR" ]; then
++  exit 1;
++fi
++
++##########################################################################################
++# Extension to allow automatically downloading the maven-wrapper.jar from Maven-central
++# This allows using the maven wrapper in projects that prohibit checking in binary data.
++##########################################################################################
++if [ -r "$BASE_DIR/.mvn/wrapper/maven-wrapper.jar" ]; then
++    if [ "$MVNW_VERBOSE" = true ]; then
++      echo "Found .mvn/wrapper/maven-wrapper.jar"
++    fi
++else
++    if [ "$MVNW_VERBOSE" = true ]; then
++      echo "Couldn't find .mvn/wrapper/maven-wrapper.jar, downloading it ..."
++    fi
++    if [ -n "$MVNW_REPOURL" ]; then
++      jarUrl="$MVNW_REPOURL/io/takari/maven-wrapper/0.5.6/maven-wrapper-0.5.6.jar"
++    else
++      jarUrl="https://repo.maven.apache.org/maven2/io/takari/maven-wrapper/0.5.6/maven-wrapper-0.5.6.jar"
++    fi
++    while IFS="=" read key value; do
++      case "$key" in (wrapperUrl) jarUrl="$value"; break ;;
++      esac
++    done < "$BASE_DIR/.mvn/wrapper/maven-wrapper.properties"
++    if [ "$MVNW_VERBOSE" = true ]; then
++      echo "Downloading from: $jarUrl"
++    fi
++    wrapperJarPath="$BASE_DIR/.mvn/wrapper/maven-wrapper.jar"
++    if $cygwin; then
++      wrapperJarPath=`cygpath --path --windows "$wrapperJarPath"`
++    fi
++
++    if command -v wget > /dev/null; then
++        if [ "$MVNW_VERBOSE" = true ]; then
++          echo "Found wget ... using wget"
++        fi
++        if [ -z "$MVNW_USERNAME" ] || [ -z "$MVNW_PASSWORD" ]; then
++            wget "$jarUrl" -O "$wrapperJarPath"
++        else
++            wget --http-user=$MVNW_USERNAME --http-password=$MVNW_PASSWORD "$jarUrl" -O "$wrapperJarPath"
++        fi
++    elif command -v curl > /dev/null; then
++        if [ "$MVNW_VERBOSE" = true ]; then
++          echo "Found curl ... using curl"
++        fi
++        if [ -z "$MVNW_USERNAME" ] || [ -z "$MVNW_PASSWORD" ]; then
++            curl -o "$wrapperJarPath" "$jarUrl" -f
++        else
++            curl --user $MVNW_USERNAME:$MVNW_PASSWORD -o "$wrapperJarPath" "$jarUrl" -f
++        fi
++
++    else
++        if [ "$MVNW_VERBOSE" = true ]; then
++          echo "Falling back to using Java to download"
++        fi
++        javaClass="$BASE_DIR/.mvn/wrapper/MavenWrapperDownloader.java"
++        # For Cygwin, switch paths to Windows format before running javac
++        if $cygwin; then
++          javaClass=`cygpath --path --windows "$javaClass"`
++        fi
++        if [ -e "$javaClass" ]; then
++            if [ ! -e "$BASE_DIR/.mvn/wrapper/MavenWrapperDownloader.class" ]; then
++                if [ "$MVNW_VERBOSE" = true ]; then
++                  echo " - Compiling MavenWrapperDownloader.java ..."
++                fi
++                # Compiling the Java class
++                ("$JAVA_HOME/bin/javac" "$javaClass")
++            fi
++            if [ -e "$BASE_DIR/.mvn/wrapper/MavenWrapperDownloader.class" ]; then
++                # Running the downloader
++                if [ "$MVNW_VERBOSE" = true ]; then
++                  echo " - Running MavenWrapperDownloader.java ..."
++                fi
++                ("$JAVA_HOME/bin/java" -cp .mvn/wrapper MavenWrapperDownloader "$MAVEN_PROJECTBASEDIR")
++            fi
++        fi
++    fi
++fi
++##########################################################################################
++# End of extension
++##########################################################################################
++
++export MAVEN_PROJECTBASEDIR=${MAVEN_BASEDIR:-"$BASE_DIR"}
++if [ "$MVNW_VERBOSE" = true ]; then
++  echo $MAVEN_PROJECTBASEDIR
++fi
++MAVEN_OPTS="$(concat_lines "$MAVEN_PROJECTBASEDIR/.mvn/jvm.config") $MAVEN_OPTS"
++
++# For Cygwin, switch paths to Windows format before running java
++if $cygwin; then
++  [ -n "$M2_HOME" ] &&
++    M2_HOME=`cygpath --path --windows "$M2_HOME"`
++  [ -n "$JAVA_HOME" ] &&
++    JAVA_HOME=`cygpath --path --windows "$JAVA_HOME"`
++  [ -n "$CLASSPATH" ] &&
++    CLASSPATH=`cygpath --path --windows "$CLASSPATH"`
++  [ -n "$MAVEN_PROJECTBASEDIR" ] &&
++    MAVEN_PROJECTBASEDIR=`cygpath --path --windows "$MAVEN_PROJECTBASEDIR"`
++fi
++
++# Provide a "standardized" way to retrieve the CLI args that will
++# work with both Windows and non-Windows executions.
++MAVEN_CMD_LINE_ARGS="$MAVEN_CONFIG $@"
++export MAVEN_CMD_LINE_ARGS
++
++WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
++
++exec "$JAVACMD" \
++  $MAVEN_OPTS \
++  -classpath "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar" \
++  "-Dmaven.home=${M2_HOME}" "-Dmaven.multiModuleProjectDirectory=${MAVEN_PROJECTBASEDIR}" \
++  ${WRAPPER_LAUNCHER} $MAVEN_CONFIG "$@"
+Index: hnparent/function-one/src/main/java/com/hengnan/core/exception/http/NotFondException.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hengnan.core.exception.http;\r\n\r\n/**\r\n * @description: 空异常\r\n * @author: leozhu\r\n * @create: 2020-09-24 22:42\r\n **/\r\npublic class NotFondException extends HttpException {\r\n    public NotFondException(int code){\r\n        this.code = code;\r\n        this.httpStatusCode = 404;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/function-one/src/main/java/com/hengnan/core/exception/http/NotFondException.java	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/function-one/src/main/java/com/hengnan/core/exception/http/NotFondException.java	(date 1619055973905)
+@@ -6,7 +6,7 @@
+  * @create: 2020-09-24 22:42
+  **/
+ public class NotFondException extends HttpException {
+-    public NotFondException(int code){
++    public NotFondException(int code) {
+         this.code = code;
+         this.httpStatusCode = 404;
+     }
+Index: hnparent/src/test/java/function/gateway/GatewayApplicationTests.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/src/test/java/function/gateway/GatewayApplicationTests.java	(date 1619055972669)
++++ hnparent/src/test/java/function/gateway/GatewayApplicationTests.java	(date 1619055972669)
+@@ -0,0 +1,13 @@
++package function.gateway;
++
++import org.junit.jupiter.api.Test;
++import org.springframework.boot.test.context.SpringBootTest;
++
++@SpringBootTest
++class GatewayApplicationTests {
++
++	@Test
++	void contextLoads() {
++	}
++
++}
+Index: hnparent/common/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\r\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\r\n    <parent>\r\n        <artifactId>hn-parent</artifactId>\r\n        <groupId>com.hengnan</groupId>\r\n        <version>1.0-SNAPSHOT</version>\r\n    </parent>\r\n    <modelVersion>4.0.0</modelVersion>\r\n\r\n    <artifactId>common</artifactId>\r\n    <version>1.0-SNAPSHOT</version>\r\n    <packaging>jar</packaging>\r\n\r\n    <properties>\r\n        <!-- 依赖的版本号 -->\r\n        <joda.time.version>2.9.9</joda.time.version>\r\n        <commons.lang.version>2.6</commons.lang.version>\r\n        <commons.io.version>2.5</commons.io.version>\r\n        <fastjson.version>1.2.29.sec06</fastjson.version>\r\n        <pinyin4j.version>2.5.1</pinyin4j.version>\r\n        <commons.codec.version>1.9</commons.codec.version>\r\n    </properties>\r\n\r\n    <dependencies>\r\n        <!-- 在Java中处理日期和时间是很常见的需求，基础的工具类就是我们熟悉的Date和Calendar，然而这些工具类的api使用并不是很方便和强大，于是就诞生了Joda-Time这个专门处理日期时间的库。-->\r\n        <dependency>\r\n            <groupId>joda-time</groupId>\r\n            <artifactId>joda-time</artifactId>\r\n            <version>${joda.time.version}</version>\r\n        </dependency>\r\n\r\n        <dependency>\r\n            <groupId>commons-lang</groupId>\r\n            <artifactId>commons-lang</artifactId>\r\n            <version>${commons.lang.version}</version>\r\n        </dependency>\r\n\r\n        <dependency>\r\n            <groupId>commons-io</groupId>\r\n            <artifactId>commons-io</artifactId>\r\n            <version>${commons.io.version}</version>\r\n        </dependency>\r\n\r\n        <!-- fastJson用于对JSON格式的数据进行解析和打包 -->\r\n        <dependency>\r\n            <groupId>com.alibaba</groupId>\r\n            <artifactId>fastjson</artifactId>\r\n            <version>${fastjson.version}</version>\r\n        </dependency>\r\n\r\n        <!-- 用于转换拼音，调用PinyinHelper类的静态工具方法 -->\r\n<!--        <dependency>-->\r\n<!--            <groupId>com.belerweb</groupId>-->\r\n<!--            <artifactId>pinyin4j</artifactId>-->\r\n<!--            <version>${pinyin4j.version}</version>-->\r\n<!--        </dependency>-->\r\n\r\n        <!-- redis -->\r\n        <dependency>\r\n            <groupId>org.springframework.boot</groupId>\r\n            <artifactId>spring-boot-starter-data-redis</artifactId>\r\n        </dependency>\r\n\r\n        <!-- 用于摘要运算、编码解码 -->\r\n        <dependency>\r\n            <groupId>commons-codec</groupId>\r\n            <artifactId>commons-codec</artifactId>\r\n            <version>${commons.codec.version}</version>\r\n        </dependency>\r\n\r\n        <!-- JPA的宗旨是为POJO提供持久化标准规范，比如@Table注解 -->\r\n        <dependency>\r\n            <groupId>javax.persistence</groupId>\r\n            <artifactId>persistence-api</artifactId>\r\n            <version>1.0</version>\r\n        </dependency>\r\n\r\n        <!-- thymeleaf：前后端数据交互模板引擎 -->\r\n        <dependency>\r\n            <groupId>org.springframework.boot</groupId>\r\n            <artifactId>spring-boot-starter-thymeleaf</artifactId>\r\n        </dependency>\r\n\r\n        <!-- JWT -->\r\n        <dependency>\r\n            <groupId>com.auth0</groupId>\r\n            <artifactId>java-jwt</artifactId>\r\n            <version>3.7.0</version>\r\n        </dependency>\r\n\r\n        <!-- Redis -->\r\n        <dependency>\r\n            <groupId>org.springframework.boot</groupId>\r\n            <artifactId>spring-boot-starter-data-redis</artifactId>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>org.apache.commons</groupId>\r\n            <artifactId>commons-pool2</artifactId>\r\n        </dependency>\r\n\r\n        <!-- xxjob任务调度中心-->\r\n        <dependency>\r\n            <groupId>com.xuxueli</groupId>\r\n            <artifactId>xxl-job-core</artifactId>\r\n            <version>2.2.0</version>\r\n        </dependency>\r\n        <dependency>\r\n            <groupId>cn.hutool</groupId>\r\n            <artifactId>hutool-all</artifactId>\r\n            <version>5.5.8</version>\r\n        </dependency>\r\n\r\n        <!--    RabbitMQ    -->\r\n        <dependency>\r\n            <groupId>org.springframework.boot</groupId>\r\n            <artifactId>spring-boot-starter-amqp</artifactId>\r\n        </dependency>\r\n    </dependencies>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/common/pom.xml	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/common/pom.xml	(date 1619055973511)
+@@ -51,11 +51,11 @@
+         </dependency>
+ 
+         <!-- 用于转换拼音，调用PinyinHelper类的静态工具方法 -->
+-<!--        <dependency>-->
+-<!--            <groupId>com.belerweb</groupId>-->
+-<!--            <artifactId>pinyin4j</artifactId>-->
+-<!--            <version>${pinyin4j.version}</version>-->
+-<!--        </dependency>-->
++        <!--        <dependency>-->
++        <!--            <groupId>com.belerweb</groupId>-->
++        <!--            <artifactId>pinyin4j</artifactId>-->
++        <!--            <version>${pinyin4j.version}</version>-->
++        <!--        </dependency>-->
+ 
+         <!-- redis -->
+         <dependency>
+Index: hnparent/function-one/src/main/java/com/hengnan/config/SwaggerConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hengnan.config;\r\n\r\n\r\nimport org.springframework.context.annotation.Bean;\r\nimport org.springframework.context.annotation.Configuration;\r\nimport springfox.documentation.builders.ApiInfoBuilder;\r\nimport springfox.documentation.builders.PathSelectors;\r\nimport springfox.documentation.builders.RequestHandlerSelectors;\r\nimport springfox.documentation.spi.DocumentationType;\r\nimport springfox.documentation.spring.web.plugins.Docket;\r\nimport springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;\r\n\r\n/**\r\n * @description:\r\n * @author: leozhu\r\n * @create: 2020-12-11 14:21\r\n **/\r\n@Configuration\r\n@EnableSwagger2WebMvc\r\npublic class SwaggerConfig {\r\n\r\n    @Bean(value = \"defaultApi2\")\r\n    public Docket defaultApi2() {\r\n        Docket docket=new Docket(DocumentationType.SWAGGER_2)\r\n                .apiInfo(new ApiInfoBuilder()\r\n                        //.title(\"swagger-bootstrap-ui-demo RESTful APIs\")\r\n                        .description(\"# swagger-bootstrap-ui-demo RESTful APIs\")\r\n                        .termsOfServiceUrl(\"http://www.xx.com/\")\r\n                        .contact(\"xx@qq.com\")\r\n                        .version(\"1.0\")\r\n                        .build())\r\n                //分组名称\r\n                .groupName(\"2.X版本\")\r\n                .select()\r\n                //这里指定Controller扫描包路径\r\n                .apis(RequestHandlerSelectors.basePackage(\"com.hengnan.controller\"))\r\n                .paths(PathSelectors.any())\r\n                .build();\r\n        return docket;\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/function-one/src/main/java/com/hengnan/config/SwaggerConfig.java	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/function-one/src/main/java/com/hengnan/config/SwaggerConfig.java	(date 1619055973459)
+@@ -21,7 +21,7 @@
+ 
+     @Bean(value = "defaultApi2")
+     public Docket defaultApi2() {
+-        Docket docket=new Docket(DocumentationType.SWAGGER_2)
++        Docket docket = new Docket(DocumentationType.SWAGGER_2)
+                 .apiInfo(new ApiInfoBuilder()
+                         //.title("swagger-bootstrap-ui-demo RESTful APIs")
+                         .description("# swagger-bootstrap-ui-demo RESTful APIs")
+Index: hnparent/function-one/src/main/java/com/hengnan/xxljob/job/UpdateUserAdminJobHandler.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hengnan.xxljob.job;\r\n\r\nimport com.hengnan.entity.UserAdmin;\r\nimport com.hengnan.mapper.UserAdminMapper;\r\nimport com.xxl.job.core.biz.model.ReturnT;\r\nimport com.xxl.job.core.handler.annotation.XxlJob;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.stereotype.Component;\r\n\r\nimport java.sql.Timestamp;\r\nimport java.util.Date;\r\nimport java.util.Objects;\r\n\r\n/**\r\n * @description:\r\n * @author: leozhu\r\n * @create: 2020/12/22 16:26\r\n **/\r\n@Component\r\npublic class UpdateUserAdminJobHandler {\r\n\r\n    private static final String userId = \"736ae9aabd8f9651c988899dec39f7fb\";\r\n\r\n    @Autowired\r\n    private UserAdminMapper userAdminMapper;\r\n\r\n    @XxlJob(\"updateUserAdminJobHandler\")\r\n    public ReturnT<String> execute(String param) throws Exception {\r\n        Timestamp timestamp = new Timestamp(new Date().getTime());\r\n        UserAdmin userAdmin = userAdminMapper.selectById(userId);\r\n        if(Objects.nonNull(userAdmin)){\r\n            userAdmin.setCreationDate(timestamp);\r\n            userAdmin.setLastUpdateDate(timestamp);\r\n            userAdmin.setFirstName(\"1234\");\r\n            userAdminMapper.updateById(userAdmin);\r\n        }\r\n        return ReturnT.SUCCESS;\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/function-one/src/main/java/com/hengnan/xxljob/job/UpdateUserAdminJobHandler.java	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/function-one/src/main/java/com/hengnan/xxljob/job/UpdateUserAdminJobHandler.java	(date 1619055974205)
+@@ -28,7 +28,7 @@
+     public ReturnT<String> execute(String param) throws Exception {
+         Timestamp timestamp = new Timestamp(new Date().getTime());
+         UserAdmin userAdmin = userAdminMapper.selectById(userId);
+-        if(Objects.nonNull(userAdmin)){
++        if (Objects.nonNull(userAdmin)) {
+             userAdmin.setCreationDate(timestamp);
+             userAdmin.setLastUpdateDate(timestamp);
+             userAdmin.setFirstName("1234");
+Index: hnparent/src/main/resources/application.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>NATIVE_TO_ASCII_UTF-8
+===================================================================
+--- hnparent/src/main/resources/application.properties	(date 1619055972709)
++++ hnparent/src/main/resources/application.properties	(date 1619055972709)
+@@ -0,0 +1,1 @@
++
+Index: hnparent/function-one/src/main/java/com/hengnan/service/UserService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hengnan.service;\r\n\r\nimport com.hengnan.entity.User;\r\n\r\nimport java.util.List;\r\n\r\npublic interface UserService {\r\n\r\n    /**\r\n     * 查询用户List\r\n     * @return\r\n     */\r\n    List<User> getUserList();\r\n\r\n    /**\r\n     * 根据用户id查询\r\n     * @param id\r\n     * @return\r\n     */\r\n    User getUserById(Integer id);\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/function-one/src/main/java/com/hengnan/service/UserService.java	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/function-one/src/main/java/com/hengnan/service/UserService.java	(date 1619055974235)
+@@ -8,12 +8,14 @@
+ 
+     /**
+      * 查询用户List
++     *
+      * @return
+      */
+     List<User> getUserList();
+ 
+     /**
+      * 根据用户id查询
++     *
+      * @param id
+      * @return
+      */
+Index: hnparent/common/src/main/java/com/hengnan/base/BaseResponse.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hengnan.base;\r\n\r\nimport com.hengnan.entity.enums.MessageEnum;\r\nimport lombok.Data;\r\n\r\n/**\r\n * @description:\r\n * @author: leozhu\r\n * @create: 2021/4/21\r\n **/\r\n@Data\r\npublic class BaseResponse<T> {\r\n\r\n    private int code;\r\n    private String message;\r\n    private T result;\r\n\r\n    public BaseResponse(){}\r\n\r\n    public BaseResponse(int code,String message,T result){\r\n        this.setCode(code);\r\n        this.setMessage(message);\r\n        this.setResult(result);\r\n    }\r\n\r\n    public static BaseResponse success(){\r\n        return new BaseResponse(MessageEnum.SUCCESS.value(), MessageEnum.SUCCESS.title(),null);\r\n    }\r\n\r\n    public static BaseResponse success(Object t){\r\n        return new BaseResponse(MessageEnum.SUCCESS.value(), MessageEnum.SUCCESS.title(),t);\r\n    }\r\n\r\n    public static BaseResponse fail(){\r\n        return new BaseResponse(MessageEnum.FAIL.value(), MessageEnum.FAIL.title(), null);\r\n    }\r\n\r\n    public static BaseResponse fail(int value,String title){\r\n        return new BaseResponse(value, title, null);\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/common/src/main/java/com/hengnan/base/BaseResponse.java	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/common/src/main/java/com/hengnan/base/BaseResponse.java	(date 1619055974126)
+@@ -15,27 +15,28 @@
+     private String message;
+     private T result;
+ 
+-    public BaseResponse(){}
++    public BaseResponse() {
++    }
+ 
+-    public BaseResponse(int code,String message,T result){
++    public BaseResponse(int code, String message, T result) {
+         this.setCode(code);
+         this.setMessage(message);
+         this.setResult(result);
+     }
+ 
+-    public static BaseResponse success(){
+-        return new BaseResponse(MessageEnum.SUCCESS.value(), MessageEnum.SUCCESS.title(),null);
++    public static BaseResponse success() {
++        return new BaseResponse(MessageEnum.SUCCESS.value(), MessageEnum.SUCCESS.title(), null);
+     }
+ 
+-    public static BaseResponse success(Object t){
+-        return new BaseResponse(MessageEnum.SUCCESS.value(), MessageEnum.SUCCESS.title(),t);
++    public static BaseResponse success(Object t) {
++        return new BaseResponse(MessageEnum.SUCCESS.value(), MessageEnum.SUCCESS.title(), t);
+     }
+ 
+-    public static BaseResponse fail(){
++    public static BaseResponse fail() {
+         return new BaseResponse(MessageEnum.FAIL.value(), MessageEnum.FAIL.title(), null);
+     }
+ 
+-    public static BaseResponse fail(int value,String title){
++    public static BaseResponse fail(int value, String title) {
+         return new BaseResponse(value, title, null);
+     }
+ 
+Index: hnparent/src/main/java/function/gateway/GatewayApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/src/main/java/function/gateway/GatewayApplication.java	(date 1619055972673)
++++ hnparent/src/main/java/function/gateway/GatewayApplication.java	(date 1619055972673)
+@@ -0,0 +1,13 @@
++package function.gateway;
++
++import org.springframework.boot.SpringApplication;
++import org.springframework.boot.autoconfigure.SpringBootApplication;
++
++@SpringBootApplication
++public class GatewayApplication {
++
++	public static void main(String[] args) {
++		SpringApplication.run(GatewayApplication.class, args);
++	}
++
++}
+Index: hnparent/common/src/main/resources/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>server:\r\n  port: 8082\r\n#  servlet:\r\n#    context-path: /demo\r\nspring:\r\n  datasource:\r\n    url:  jdbc:mysql://127.0.0.1:3306/demo?useSSL=false&useUnicode=true&characterEncoding=utf-8\r\n    username: root\r\n    password: root123\r\n    driver-class-name: com.mysql.jdbc.Driver\r\n    type: com.alibaba.druid.pool.DruidDataSource\r\n  #thymeleaf\r\n  thymeleaf:\r\n    prefix: classpath:/templates/\r\n    suffix: .html\r\n    cache: false\r\n    servlet:\r\n      content-type: text/html\r\n    enabled: true\r\n    encoding: UTF-8\r\n    mode: HTML5\r\nmybatis:\r\n  mapper-locations: classpath:mapper/*Mapper.xml    #配置映射文件\r\n  type-aliases-package: entity   #配置实体类
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/common/src/main/resources/application.yml	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/common/src/main/resources/application.yml	(date 1619055974047)
+@@ -4,7 +4,7 @@
+ #    context-path: /demo
+ spring:
+   datasource:
+-    url:  jdbc:mysql://127.0.0.1:3306/demo?useSSL=false&useUnicode=true&characterEncoding=utf-8
++    url: jdbc:mysql://127.0.0.1:3306/demo?useSSL=false&useUnicode=true&characterEncoding=utf-8
+     username: root
+     password: root123
+     driver-class-name: com.mysql.jdbc.Driver
+Index: hnparent/function-one/src/main/java/com/hengnan/service/impl/UserServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hengnan.service.impl;\r\n\r\nimport com.hengnan.entity.User;\r\nimport com.hengnan.mapper.UserMapper;\r\nimport com.hengnan.service.UserService;\r\nimport org.springframework.stereotype.Service;\r\n\r\nimport javax.annotation.Resource;\r\nimport java.util.List;\r\n\r\n/**\r\n * @description:\r\n * @author: leozhu\r\n * @create: 2020-12-06 16:54\r\n **/\r\n@Service\r\npublic class UserServiceImpl implements UserService {\r\n    @Resource\r\n    private UserMapper userMapper;\r\n\r\n    public List<User> getUserList(){\r\n        List<User> userList = userMapper.getUserList();\r\n        return userList;\r\n    }\r\n\r\n    @Override\r\n    public User getUserById(Integer id) {\r\n        User user = userMapper.getUserById(id);\r\n        return user;\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/function-one/src/main/java/com/hengnan/service/impl/UserServiceImpl.java	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/function-one/src/main/java/com/hengnan/service/impl/UserServiceImpl.java	(date 1619055973419)
+@@ -18,7 +18,7 @@
+     @Resource
+     private UserMapper userMapper;
+ 
+-    public List<User> getUserList(){
++    public List<User> getUserList() {
+         List<User> userList = userMapper.getUserList();
+         return userList;
+     }
+Index: hnparent/function-one/src/main/java/com/hengnan/service/impl/UserAdminServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hengnan.service.impl;\r\n\r\nimport cn.hutool.crypto.digest.DigestUtil;\r\nimport com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;\r\nimport com.hengnan.entity.UserAdmin;\r\nimport com.hengnan.entity.enums.StatusEnum;\r\nimport com.hengnan.mapper.UserAdminMapper;\r\nimport com.hengnan.service.UserAdminService;\r\nimport org.springframework.stereotype.Service;\r\nimport org.springframework.transaction.annotation.Transactional;\r\n\r\nimport javax.annotation.Resource;\r\nimport java.sql.Timestamp;\r\nimport java.util.Date;\r\nimport java.util.List;\r\n\r\n/**\r\n * @description:\r\n * @author: leozhu\r\n * @create: 2020-12-06 20:36\r\n **/\r\n@Service\r\n@Transactional(rollbackFor = Exception.class)\r\npublic class UserAdminServiceImpl implements UserAdminService {\r\n\r\n    @Resource\r\n    private UserAdminMapper userAdminMapper;\r\n\r\n    @Override\r\n    public List<UserAdmin> getList() {\r\n        List<UserAdmin> userAdmins = userAdminMapper.selectList(new QueryWrapper<>());\r\n        return userAdmins;\r\n    }\r\n\r\n    @Override\r\n    public UserAdmin add(UserAdmin userAdmin) {\r\n        Timestamp timestamp = new Timestamp(new Date().getTime());\r\n        userAdmin.setPassWord(DigestUtil.md5Hex(userAdmin.getPassWord()));\r\n        userAdmin.setMobile(userAdmin.getLoginId());\r\n        userAdmin.setCreationDate(timestamp);\r\n        userAdmin.setLastUpdateDate(timestamp);\r\n        userAdmin.setStatus(StatusEnum.NORMAL.value());\r\n        userAdminMapper.insert(userAdmin);\r\n        return userAdmin;\r\n    }\r\n\r\n    @Override\r\n    public UserAdmin findById(String userId) {\r\n        UserAdmin userAdmin = userAdminMapper.selectById(userId);\r\n        return userAdmin;\r\n    }\r\n\r\n    @Override\r\n    public UserAdmin findByLoginId(String loginId) {\r\n        return userAdminMapper.selectOne(\r\n                new QueryWrapper<UserAdmin>().lambda()\r\n                    .eq(UserAdmin::getLoginId,loginId)\r\n                    .eq(UserAdmin::getStatus,StatusEnum.NORMAL.value())\r\n        );\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/function-one/src/main/java/com/hengnan/service/impl/UserAdminServiceImpl.java	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/function-one/src/main/java/com/hengnan/service/impl/UserAdminServiceImpl.java	(date 1619055973274)
+@@ -54,8 +54,8 @@
+     public UserAdmin findByLoginId(String loginId) {
+         return userAdminMapper.selectOne(
+                 new QueryWrapper<UserAdmin>().lambda()
+-                    .eq(UserAdmin::getLoginId,loginId)
+-                    .eq(UserAdmin::getStatus,StatusEnum.NORMAL.value())
++                        .eq(UserAdmin::getLoginId, loginId)
++                        .eq(UserAdmin::getStatus, StatusEnum.NORMAL.value())
+         );
+     }
+ }
+Index: hnparent/function-one/src/main/java/com/hengnan/test/Test.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hengnan.test;\r\n\r\nimport java.util.Date;\r\n\r\n/**\r\n * @description:\r\n * @author: leozhu\r\n * @create: 2021/2/1 17:26\r\n **/\r\npublic class Test {\r\n    public volatile int inc = 0;\r\n\r\n    public void increase() {\r\n        inc++;\r\n    }\r\n\r\n    static class TimerThread extends Thread {\r\n        @Override\r\n        public void run() {\r\n            while (true) {\r\n                System.out.println(new Date());\r\n                try {\r\n                    Thread.sleep(1000);\r\n                } catch (InterruptedException e) {\r\n                    break;\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    public static void main(String[] args) {\r\n\r\n        Thread t = new TimerThread();\r\n        t.setDaemon(Boolean.TRUE);\r\n        t.start();\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n//        final Test test = new Test();\r\n//        for(int i=0;i<10;i++){\r\n//            new Thread(){\r\n//                public void run() {\r\n//                    for(int j=0;j<1000;j++)\r\n//                        test.increase();\r\n//                };\r\n//            }.start();\r\n//        }\r\n//\r\n//        while(Thread.activeCount()>1)  //保证前面的线程都执行完\r\n//            Thread.yield();\r\n//        System.out.println(test.inc);\r\n\r\n\r\n//        HelloThread t = new HelloThread();\r\n//        t.start();\r\n//        Thread.sleep(1);\r\n//        t.running = false; // 标志位置为false\r\n\r\n\r\n//        Thread t = new MyThread();\r\n//        t.start();\r\n//        Thread.sleep(1000);\r\n//        t.interrupt(); // 中断t线程\r\n//        t.join(); // 等待t线程结束\r\n//        System.out.println(\"end\");\r\n\r\n\r\n\r\n//        Thread thread = new Thread(()-> {\r\n//            System.out.println(\"123\");\r\n//        });\r\n//        System.out.println(\"start\");\r\n//        thread.start();\r\n//        thread.join();\r\n//        System.out.println(\"end\");\r\n\r\n\r\n//        Thread thread = new MyThread();\r\n//        thread.start();\r\n\r\n//        System.out.println(\"main start...\");\r\n//        Thread t = new Thread() {\r\n//            public void run() {\r\n//                System.out.println(\"thread run...\");\r\n//                try{\r\n//                    Thread.sleep(30);\r\n//                }catch (Exception e){}\r\n//                System.out.println(\"thread end.\");\r\n//            }\r\n//        };\r\n//        t.start();\r\n//        try {\r\n//            Thread.sleep(20);\r\n//        } catch (Exception e){}\r\n//        System.out.println(\"main end...\");\r\n\r\n\r\n\r\n//        ExecutorService service = Executors.newCachedThreadPool();\r\n//        final CountDownLatch cdOrder = new CountDownLatch(1);\r\n//        final CountDownLatch cdAnswer = new CountDownLatch(4);\r\n//        for (int i = 0; i < 4; i++) {\r\n//            Runnable runnable = new Runnable() {\r\n//                @Override\r\n//                public void run() {\r\n//                    try {\r\n//                        System.out.println(\"选手\" + Thread.currentThread().getName() + \"正在等待裁判发布口令\");\r\n//                        cdOrder.await();\r\n//                        System.out.println(\"选手\" + Thread.currentThread().getName() + \"已接受裁判口令\");\r\n//                        Thread.sleep((long) (Math.random() * 10000));\r\n//                        System.out.println(\"选手\" + Thread.currentThread().getName() + \"到达终点\");\r\n//                        cdAnswer.countDown();\r\n//                    } catch (InterruptedException e) {\r\n//                        e.printStackTrace();\r\n//                    }\r\n//                }\r\n//            };\r\n//            service.execute(runnable);\r\n//        }\r\n//        try {\r\n//            Thread.sleep((long) (Math.random() * 10000));\r\n//            System.out.println(\"裁判\"+Thread.currentThread().getName()+\"即将发布口令\");\r\n//            cdOrder.countDown();\r\n//            System.out.println(\"裁判\"+Thread.currentThread().getName()+\"已发送口令，正在等待所有选手到达终点\");\r\n//            cdAnswer.await();\r\n//            System.out.println(\"所有选手都到达终点\");\r\n//            System.out.println(\"裁判\"+Thread.currentThread().getName()+\"汇总成绩排名\");\r\n//        } catch (InterruptedException e) {\r\n//            e.printStackTrace();\r\n//        }\r\n//        service.shutdown();\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n//        ExecutorService service = Executors.newFixedThreadPool(3);\r\n//        final CountDownLatch latch = new CountDownLatch(3);\r\n//        for (int i = 0; i < 3; i++) {\r\n//            Runnable runnable = new Runnable() {\r\n//                @Override\r\n//                public void run() {\r\n//                    try {\r\n//                        System.out.println(\"子线程\" + Thread.currentThread().getName() + \"开始执行\");\r\n//                        Thread.sleep((long) (Math.random() * 10000));\r\n//                        System.out.println(\"子线程\"+Thread.currentThread().getName()+\"执行完成\");\r\n//                        latch.countDown();//当前线程调用此方法，则计数减一\r\n//                    } catch (InterruptedException e) {\r\n//                        e.printStackTrace();\r\n//                    }\r\n//                }\r\n//            };\r\n//            service.execute(runnable);\r\n//        }\r\n//\r\n//        try {\r\n//            System.out.println(\"主线程\"+Thread.currentThread().getName()+\"等待子线程执行完成...\");\r\n//            latch.await();//阻塞当前线程，直到计数器的值为0\r\n//            System.out.println(\"主线程\"+Thread.currentThread().getName()+\"开始执行...\");\r\n//        } catch (InterruptedException e) {\r\n//            e.printStackTrace();\r\n//        }\r\n\r\n        //    public static class MyThread extends Thread{\r\n//        public void run() {\r\n//            Thread hello = new HelloThread();\r\n//            hello.start(); // 启动hello线程\r\n//            try {\r\n//                hello.join(); // 等待hello线程结束\r\n//            } catch (InterruptedException e) {\r\n//                System.out.println(\"interrupted!\");\r\n//            }\r\n//            hello.interrupt();\r\n//        }\r\n//    }\r\n\r\n//    public static class HelloThread extends Thread {\r\n//        public volatile boolean running = true;\r\n//        public void run() {\r\n//            int n = 0;\r\n//            while (running) {\r\n//                n ++;\r\n//                System.out.println(n + \" hello!\");\r\n//            }\r\n//            System.out.println(\"end!\");\r\n//        }\r\n//    }\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/function-one/src/main/java/com/hengnan/test/Test.java	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/function-one/src/main/java/com/hengnan/test/Test.java	(date 1619055973874)
+@@ -35,16 +35,6 @@
+         t.start();
+ 
+ 
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+ //        final Test test = new Test();
+ //        for(int i=0;i<10;i++){
+ //            new Thread(){
+@@ -74,7 +64,6 @@
+ //        System.out.println("end");
+ 
+ 
+-
+ //        Thread thread = new Thread(()-> {
+ //            System.out.println("123");
+ //        });
+@@ -104,7 +93,6 @@
+ //        System.out.println("main end...");
+ 
+ 
+-
+ //        ExecutorService service = Executors.newCachedThreadPool();
+ //        final CountDownLatch cdOrder = new CountDownLatch(1);
+ //        final CountDownLatch cdAnswer = new CountDownLatch(4);
+@@ -140,11 +128,6 @@
+ //        service.shutdown();
+ 
+ 
+-
+-
+-
+-
+-
+ //        ExecutorService service = Executors.newFixedThreadPool(3);
+ //        final CountDownLatch latch = new CountDownLatch(3);
+ //        for (int i = 0; i < 3; i++) {
+Index: hnparent/function-one/src/main/resources/application-prod.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>server:\r\n  port: 8081\r\n#  servlet:\r\n#    context-path: /demo\r\nspring:\r\n  datasource:\r\n    url:  jdbc:mysql://127.0.0.1:3306/demo?useSSL=false&useUnicode=true&characterEncoding=utf-8\r\n    username: root\r\n    password: root123\r\n    driver-class-name: com.mysql.jdbc.Driver\r\n    type: com.alibaba.druid.pool.DruidDataSource\r\n  #thymeleaf\r\n  thymeleaf:\r\n    prefix: classpath:/templates/\r\n    suffix: .html\r\n    cache: false\r\n    servlet:\r\n      content-type: text/html\r\n    enabled: true\r\n    encoding: UTF-8\r\n    mode: HTML5\r\nmybatis:\r\n  mapper-locations: classpath:mapper/*Mapper.xml    #配置映射文件\r\n  type-aliases-package: entity   #配置实体类
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/function-one/src/main/resources/application-prod.yml	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/function-one/src/main/resources/application-prod.yml	(date 1619055973979)
+@@ -4,7 +4,7 @@
+ #    context-path: /demo
+ spring:
+   datasource:
+-    url:  jdbc:mysql://127.0.0.1:3306/demo?useSSL=false&useUnicode=true&characterEncoding=utf-8
++    url: jdbc:mysql://127.0.0.1:3306/demo?useSSL=false&useUnicode=true&characterEncoding=utf-8
+     username: root
+     password: root123
+     driver-class-name: com.mysql.jdbc.Driver
+Index: hnparent/function-one/src/main/java/com/hengnan/controller/UserAdminController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hengnan.controller;\r\n\r\nimport com.hengnan.entity.UserAdmin;\r\nimport com.hengnan.service.UserAdminService;\r\nimport io.swagger.annotations.Api;\r\nimport io.swagger.annotations.ApiOperation;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.web.bind.annotation.*;\r\n\r\nimport java.util.List;\r\n\r\n/**\r\n * @description:\r\n * @author: leozhu\r\n * @create: 2020-12-06 20:38\r\n **/\r\n@Api(tags = \"用户管理\")\r\n@RestController\r\n@RequestMapping(\"userAdmin\")\r\npublic class UserAdminController {\r\n\r\n    @Autowired\r\n    private UserAdminService userAdminService;\r\n\r\n    @ApiOperation(\"查询用户列表\")\r\n    @GetMapping(\"/getList\")\r\n    public List<UserAdmin> getList(){\r\n        List<UserAdmin> userAdmins = userAdminService.getList();\r\n        return userAdmins;\r\n    }\r\n\r\n    @ApiOperation(\"新增用户接口\")\r\n    @PostMapping(\"/add\")\r\n    public UserAdmin add(@RequestBody UserAdmin userAdmin){\r\n        UserAdmin user = userAdminService.add(userAdmin);\r\n        return user;\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/function-one/src/main/java/com/hengnan/controller/UserAdminController.java	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/function-one/src/main/java/com/hengnan/controller/UserAdminController.java	(date 1619055973626)
+@@ -24,14 +24,14 @@
+ 
+     @ApiOperation("查询用户列表")
+     @GetMapping("/getList")
+-    public List<UserAdmin> getList(){
++    public List<UserAdmin> getList() {
+         List<UserAdmin> userAdmins = userAdminService.getList();
+         return userAdmins;
+     }
+ 
+     @ApiOperation("新增用户接口")
+     @PostMapping("/add")
+-    public UserAdmin add(@RequestBody UserAdmin userAdmin){
++    public UserAdmin add(@RequestBody UserAdmin userAdmin) {
+         UserAdmin user = userAdminService.add(userAdmin);
+         return user;
+     }
+Index: hnparent/function-one/src/main/java/com/hengnan/FunctionOneApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.hengnan;\r\n\r\nimport org.mybatis.spring.annotation.MapperScan;\r\nimport org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;\r\nimport org.springframework.amqp.support.converter.MessageConverter;\r\nimport org.springframework.boot.SpringApplication;\r\nimport org.springframework.boot.autoconfigure.SpringBootApplication;\r\nimport org.springframework.context.annotation.Bean;\r\n\r\n/**\r\n * @description:\r\n * @author: leozhu\r\n * @create: 2020-12-06 17:13\r\n **/\r\n@SpringBootApplication\r\n@MapperScan({\"com.hengnan.mapper\"})\r\npublic class FunctionOneApplication {\r\n    public static void main(String[] args) {\r\n        SpringApplication.run(FunctionOneApplication.class,args);\r\n    }\r\n\r\n    @Bean\r\n    MessageConverter createMessageConverter(){\r\n        return new Jackson2JsonMessageConverter();\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/function-one/src/main/java/com/hengnan/FunctionOneApplication.java	(revision 4d91eae18bc2fa2ffad99a48bca5b5c057f96309)
++++ hnparent/function-one/src/main/java/com/hengnan/FunctionOneApplication.java	(date 1619055974087)
+@@ -16,11 +16,11 @@
+ @MapperScan({"com.hengnan.mapper"})
+ public class FunctionOneApplication {
+     public static void main(String[] args) {
+-        SpringApplication.run(FunctionOneApplication.class,args);
++        SpringApplication.run(FunctionOneApplication.class, args);
+     }
+ 
+     @Bean
+-    MessageConverter createMessageConverter(){
++    MessageConverter createMessageConverter() {
+         return new Jackson2JsonMessageConverter();
+     }
+ 

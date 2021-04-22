@@ -1,0 +1,141 @@
+Index: hnparent/function-one/target/classes/application-dev.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>server:\r\n  port: 8081\r\n#  servlet:\r\n#    context-path: /demo\r\nspring:\r\n  datasource:\r\n    url:  jdbc:mysql://127.0.0.1:3306/demo?useSSL=false&useUnicode=true&characterEncoding=utf-8\r\n    username: root\r\n    password: root123\r\n    driver-class-name: com.mysql.jdbc.Driver\r\n    type: com.alibaba.druid.pool.DruidDataSource\r\n  #thymeleaf\r\n  thymeleaf:\r\n    prefix: classpath:/templates/\r\n    suffix: .html\r\n    cache: false\r\n    servlet:\r\n      content-type: text/html\r\n    enabled: true\r\n    encoding: UTF-8\r\n    mode: HTML5\r\nmybatis:\r\n  mapper-locations: classpath:mapper/*Mapper.xml    #配置映射文件\r\n  type-aliases-package: entity   #配置实体类\r\n\r\n#### xxl-job admin address list, such as \"http://address\" or \"http://address01,http://address02\"\r\n#  xxl.job.admin.addresses=http://127.0.0.1:8080/xxl-job-admin\r\n#\r\n#  ### xxl-job, access token\r\n#  xxl.job.accessToken=\r\n#\r\n#  ### xxl-job executor appname\r\n#  xxl.job.executor.appname=xxl-job-executor-sample\r\n#  ### xxl-job executor registry-address: default use address to registry , otherwise use ip:port if address is null\r\n#  xxl.job.executor.address=\r\n#  ### xxl-job executor server-info\r\n#  xxl.job.executor.ip=\r\n#  xxl.job.executor.port=9999\r\n#  ### xxl-job executor log-path\r\n#  xxl.job.executor.logpath=/data/applogs/xxl-job/jobhandler\r\n#  ### xxl-job executor log-retention-days\r\n#  xxl.job.executor.logretentiondays=30\r\n\r\nxxl:\r\n  job:\r\n    admin:\r\n      addresses: http://127.0.0.1:8099/xxl-job-admin\r\n    executor:\r\n      appname: functionOne-executor\r\n      address:\r\n      ip:\r\n      port: 9998\r\n      logpath: /data/applogs/xxl-job/jobhandler\r\n      logretentiondays: 30\r\n    accessToken:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/function-one/target/classes/application-dev.yml	(revision a2e14491b8db5eea6bc899fc2f79b6bf4e83b48e)
++++ hnparent/function-one/target/classes/application-dev.yml	(date 1614935674758)
+@@ -4,52 +4,35 @@
+ #    context-path: /demo
+ spring:
+   datasource:
+-    url:  jdbc:mysql://127.0.0.1:3306/demo?useSSL=false&useUnicode=true&characterEncoding=utf-8
++    url:  jdbc:mysql://127.0.0.1:3306/xxl_job?useSSL=false&useUnicode=true&characterEncoding=utf-8
+     username: root
+     password: root123
+     driver-class-name: com.mysql.jdbc.Driver
+     type: com.alibaba.druid.pool.DruidDataSource
+   #thymeleaf
+-  thymeleaf:
+-    prefix: classpath:/templates/
+-    suffix: .html
+-    cache: false
+-    servlet:
+-      content-type: text/html
+-    enabled: true
+-    encoding: UTF-8
+-    mode: HTML5
++#  thymeleaf:
++#    prefix: classpath:/templates/
++#    suffix: .html
++#    cache: false
++#    servlet:
++#      content-type: text/html
++#    enabled: true
++#    encoding: UTF-8
++#    mode: HTML5
+ mybatis:
+   mapper-locations: classpath:mapper/*Mapper.xml    #配置映射文件
+   type-aliases-package: entity   #配置实体类
+ 
+-#### xxl-job admin address list, such as "http://address" or "http://address01,http://address02"
+-#  xxl.job.admin.addresses=http://127.0.0.1:8080/xxl-job-admin
+-#
+-#  ### xxl-job, access token
+-#  xxl.job.accessToken=
+-#
+-#  ### xxl-job executor appname
+-#  xxl.job.executor.appname=xxl-job-executor-sample
+-#  ### xxl-job executor registry-address: default use address to registry , otherwise use ip:port if address is null
+-#  xxl.job.executor.address=
+-#  ### xxl-job executor server-info
+-#  xxl.job.executor.ip=
+-#  xxl.job.executor.port=9999
+-#  ### xxl-job executor log-path
+-#  xxl.job.executor.logpath=/data/applogs/xxl-job/jobhandler
+-#  ### xxl-job executor log-retention-days
+-#  xxl.job.executor.logretentiondays=30
+-
++#xxl-job 配置数据
+ xxl:
+   job:
+     admin:
+-      addresses: http://127.0.0.1:8099/xxl-job-admin
++      addresses: http://127.0.0.1:8080/xxl-job-admin
+     executor:
+-      appname: functionOne-executor
++      appname: xxl-job-executor-sample
+       address:
+       ip:
+       port: 9998
+       logpath: /data/applogs/xxl-job/jobhandler
+       logretentiondays: 30
+-    accessToken:
+\ No newline at end of file
++    accessToken:
+Index: hnparent/function-one/src/main/resources/application-dev.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>server:\r\n  port: 8081\r\n#  servlet:\r\n#    context-path: /demo\r\nspring:\r\n  datasource:\r\n    url:  jdbc:mysql://127.0.0.1:3306/demo?useSSL=false&useUnicode=true&characterEncoding=utf-8\r\n    username: root\r\n    password: root123\r\n    driver-class-name: com.mysql.jdbc.Driver\r\n    type: com.alibaba.druid.pool.DruidDataSource\r\n  #thymeleaf\r\n  thymeleaf:\r\n    prefix: classpath:/templates/\r\n    suffix: .html\r\n    cache: false\r\n    servlet:\r\n      content-type: text/html\r\n    enabled: true\r\n    encoding: UTF-8\r\n    mode: HTML5\r\nmybatis:\r\n  mapper-locations: classpath:mapper/*Mapper.xml    #配置映射文件\r\n  type-aliases-package: entity   #配置实体类\r\n\r\n#xxl-job 配置数据\r\nxxl:\r\n  job:\r\n    admin:\r\n      addresses: http://127.0.0.1:8099/xxl-job-admin\r\n    executor:\r\n      appname: functionOne-executor\r\n      address:\r\n      ip:\r\n      port: 9998\r\n      logpath: /data/applogs/xxl-job/jobhandler\r\n      logretentiondays: 30\r\n    accessToken:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- hnparent/function-one/src/main/resources/application-dev.yml	(revision a2e14491b8db5eea6bc899fc2f79b6bf4e83b48e)
++++ hnparent/function-one/src/main/resources/application-dev.yml	(date 1614936090324)
+@@ -1,24 +1,24 @@
+ server:
+-  port: 8081
+-#  servlet:
+-#    context-path: /demo
++  port: 8082
++  servlet:
++    context-path: /demo
+ spring:
+   datasource:
+-    url:  jdbc:mysql://127.0.0.1:3306/demo?useSSL=false&useUnicode=true&characterEncoding=utf-8
++    url:  jdbc:mysql://127.0.0.1:3306/xxl_job?useSSL=false&useUnicode=true&characterEncoding=utf-8
+     username: root
+     password: root123
+     driver-class-name: com.mysql.jdbc.Driver
+     type: com.alibaba.druid.pool.DruidDataSource
+   #thymeleaf
+-  thymeleaf:
+-    prefix: classpath:/templates/
+-    suffix: .html
+-    cache: false
+-    servlet:
+-      content-type: text/html
+-    enabled: true
+-    encoding: UTF-8
+-    mode: HTML5
++#  thymeleaf:
++#    prefix: classpath:/templates/
++#    suffix: .html
++#    cache: false
++#    servlet:
++#      content-type: text/html
++#    enabled: true
++#    encoding: UTF-8
++#    mode: HTML5
+ mybatis:
+   mapper-locations: classpath:mapper/*Mapper.xml    #配置映射文件
+   type-aliases-package: entity   #配置实体类
+@@ -27,12 +27,12 @@
+ xxl:
+   job:
+     admin:
+-      addresses: http://127.0.0.1:8099/xxl-job-admin
++      addresses: http://127.0.0.1:8080/xxl-job-admin
+     executor:
+-      appname: functionOne-executor
++      appname: xxl-job-executor-sample
+       address:
+       ip:
+       port: 9998
+       logpath: /data/applogs/xxl-job/jobhandler
+       logretentiondays: 30
+-    accessToken:
+\ No newline at end of file
++    accessToken:

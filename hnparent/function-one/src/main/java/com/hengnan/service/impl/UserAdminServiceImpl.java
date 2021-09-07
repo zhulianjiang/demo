@@ -4,7 +4,7 @@ import cn.hutool.crypto.digest.DigestUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.hengnan.entity.UserAdmin;
 import com.hengnan.entity.enums.StatusEnum;
-import com.hengnan.mapper.UserAdminMapper;
+import com.hengnan.mapper.test1.UserAdminMapper;
 import com.hengnan.service.UserAdminService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -54,8 +54,8 @@ public class UserAdminServiceImpl implements UserAdminService {
     public UserAdmin findByLoginId(String loginId) {
         return userAdminMapper.selectOne(
                 new QueryWrapper<UserAdmin>().lambda()
-                    .eq(UserAdmin::getLoginId,loginId)
-                    .eq(UserAdmin::getStatus,StatusEnum.NORMAL.value())
+                        .eq(UserAdmin::getLoginId, loginId)
+                        .eq(UserAdmin::getStatus, StatusEnum.NORMAL.value())
         );
     }
 }

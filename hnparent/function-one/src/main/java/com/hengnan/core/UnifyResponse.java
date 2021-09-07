@@ -10,7 +10,7 @@ public class UnifyResponse {
     private String message;
     private String url;
 
-    public UnifyResponse(int code,String message,String url){
+    public UnifyResponse(int code, String message, String url) {
         this.code = code;
         this.message = message;
         this.url = url;

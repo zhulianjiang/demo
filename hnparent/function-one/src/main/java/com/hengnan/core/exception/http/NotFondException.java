@@ -6,7 +6,7 @@ package com.hengnan.core.exception.http;
  * @create: 2020-09-24 22:42
  **/
 public class NotFondException extends HttpException {
-    public NotFondException(int code){
+    public NotFondException(int code) {
         this.code = code;
         this.httpStatusCode = 404;
     }

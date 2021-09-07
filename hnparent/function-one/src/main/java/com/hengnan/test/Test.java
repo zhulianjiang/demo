@@ -1,6 +1,21 @@
 package com.hengnan.test;
 
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
+import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.MessageSourceResolvable;
+import org.springframework.context.NoSuchMessageException;
+import org.springframework.core.ResolvableType;
+import org.springframework.core.env.Environment;
+
+import java.io.IOException;
+import java.lang.annotation.Annotation;
 import java.util.Date;
+import java.util.Locale;
+import java.util.Map;
 
 /**
  * @description:
@@ -8,6 +23,7 @@ import java.util.Date;
  * @create: 2021/2/1 17:26
  **/
 public class Test {
+
     public volatile int inc = 0;
 
     public void increase() {
@@ -29,173 +45,257 @@ public class Test {
     }
 
     public static void main(String[] args) {
+        //创建spring容器
+        ApplicationContext applicationContext = new ApplicationContext() {
+            @Override
+            public String getId() {
+                return null;
+            }
 
-        Thread t = new TimerThread();
-        t.setDaemon(Boolean.TRUE);
-        t.start();
+            @Override
+            public String getApplicationName() {
+                return null;
+            }
+
+            @Override
+            public String getDisplayName() {
+                return null;
+            }
+
+            @Override
+            public long getStartupDate() {
+                return 0;
+            }
+
+            @Override
+            public ApplicationContext getParent() {
+                return null;
+            }
+
+            @Override
+            public AutowireCapableBeanFactory getAutowireCapableBeanFactory() throws IllegalStateException {
+                return null;
+            }
+
+            @Override
+            public BeanFactory getParentBeanFactory() {
+                return null;
+            }
+
+            @Override
+            public boolean containsLocalBean(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean containsBeanDefinition(String s) {
+                return false;
+            }
+
+            @Override
+            public int getBeanDefinitionCount() {
+                return 0;
+            }
+
+            @Override
+            public String[] getBeanDefinitionNames() {
+                return new String[0];
+            }
+
+            @Override
+            public <T> ObjectProvider<T> getBeanProvider(Class<T> aClass, boolean b) {
+                return null;
+            }
+
+            @Override
+            public <T> ObjectProvider<T> getBeanProvider(ResolvableType resolvableType, boolean b) {
+                return null;
+            }
+
+            @Override
+            public String[] getBeanNamesForType(ResolvableType resolvableType) {
+                return new String[0];
+            }
+
+            @Override
+            public String[] getBeanNamesForType(ResolvableType resolvableType, boolean b, boolean b1) {
+                return new String[0];
+            }
+
+            @Override
+            public String[] getBeanNamesForType(Class<?> aClass) {
+                return new String[0];
+            }
+
+            @Override
+            public String[] getBeanNamesForType(Class<?> aClass, boolean b, boolean b1) {
+                return new String[0];
+            }
+
+            @Override
+            public <T> Map<String, T> getBeansOfType(Class<T> aClass) throws BeansException {
+                return null;
+            }
+
+            @Override
+            public <T> Map<String, T> getBeansOfType(Class<T> aClass, boolean b, boolean b1) throws BeansException {
+                return null;
+            }
+
+            @Override
+            public String[] getBeanNamesForAnnotation(Class<? extends Annotation> aClass) {
+                return new String[0];
+            }
+
+            @Override
+            public Map<String, Object> getBeansWithAnnotation(Class<? extends Annotation> aClass) throws BeansException {
+                return null;
+            }
+
+            @Override
+            public <A extends Annotation> A findAnnotationOnBean(String s, Class<A> aClass) throws NoSuchBeanDefinitionException {
+                return null;
+            }
+
+            @Override
+            public Object getBean(String s) throws BeansException {
+                return null;
+            }
+
+            @Override
+            public <T> T getBean(String s, Class<T> aClass) throws BeansException {
+                return null;
+            }
+
+            @Override
+            public Object getBean(String s, Object... objects) throws BeansException {
+                return null;
+            }
+
+            @Override
+            public <T> T getBean(Class<T> aClass) throws BeansException {
+                return null;
+            }
+
+            @Override
+            public <T> T getBean(Class<T> aClass, Object... objects) throws BeansException {
+                return null;
+            }
+
+            @Override
+            public <T> ObjectProvider<T> getBeanProvider(Class<T> aClass) {
+                return null;
+            }
+
+            @Override
+            public <T> ObjectProvider<T> getBeanProvider(ResolvableType resolvableType) {
+                return null;
+            }
+
+            @Override
+            public boolean containsBean(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean isSingleton(String s) throws NoSuchBeanDefinitionException {
+                return false;
+            }
+
+            @Override
+            public boolean isPrototype(String s) throws NoSuchBeanDefinitionException {
+                return false;
+            }
+
+            @Override
+            public boolean isTypeMatch(String s, ResolvableType resolvableType) throws NoSuchBeanDefinitionException {
+                return false;
+            }
+
+            @Override
+            public boolean isTypeMatch(String s, Class<?> aClass) throws NoSuchBeanDefinitionException {
+                return false;
+            }
+
+            @Override
+            public Class<?> getType(String s) throws NoSuchBeanDefinitionException {
+                return null;
+            }
+
+            @Override
+            public Class<?> getType(String s, boolean b) throws NoSuchBeanDefinitionException {
+                return null;
+            }
+
+            @Override
+            public String[] getAliases(String s) {
+                return new String[0];
+            }
+
+            @Override
+            public void publishEvent(Object o) {
+
+            }
+
+            @Override
+            public String getMessage(String s, Object[] objects, String s1, Locale locale) {
+                return null;
+            }
+
+            @Override
+            public String getMessage(String s, Object[] objects, Locale locale) throws NoSuchMessageException {
+                return null;
+            }
+
+            @Override
+            public String getMessage(MessageSourceResolvable messageSourceResolvable, Locale locale) throws NoSuchMessageException {
+                return null;
+            }
+
+            @Override
+            public Environment getEnvironment() {
+                return null;
+            }
+
+            @Override
+            public org.springframework.core.io.Resource[] getResources(String s) throws IOException {
+                return new org.springframework.core.io.Resource[0];
+            }
+
+            @Override
+            public org.springframework.core.io.Resource getResource(String s) {
+                return null;
+            }
+
+            @Override
+            public ClassLoader getClassLoader() {
+                return null;
+            }
+        };
+        EmailEvent ele=new EmailEvent("test","spring_test@163.com","this is a test");
+        //发布容器事件
+        applicationContext.publishEvent(ele);
 
 
+//        ctx.publishEvent(ele);
+
+//        String permission = "00000000-00000001,00000000-00000001-10010000,00000000-00000001-10010000-50003636,00000000-00000001-10010000-50003637,00000000-00000001-10010000-50007037";
+//        String dataPermission = "00000000-00000001,00000000-00000001-10010000";
+//        List<String> sharePermissions = Arrays.asList(permission.split(","));
+//        List<String> dataPermissions = Arrays.asList(dataPermission.split(","));
+//        List<String> filterPermissions = sharePermissions.stream().filter(it -> !dataPermissions.contains(it)).distinct().collect(Collectors.toList());
+//        System.out.println(filterPermissions);
 
 
-
-
-
-
-
-
-
-
-//        final Test test = new Test();
-//        for(int i=0;i<10;i++){
-//            new Thread(){
-//                public void run() {
-//                    for(int j=0;j<1000;j++)
-//                        test.increase();
-//                };
-//            }.start();
-//        }
-//
-//        while(Thread.activeCount()>1)  //保证前面的线程都执行完
-//            Thread.yield();
-//        System.out.println(test.inc);
-
-
-//        HelloThread t = new HelloThread();
-//        t.start();
-//        Thread.sleep(1);
-//        t.running = false; // 标志位置为false
-
-
-//        Thread t = new MyThread();
-//        t.start();
-//        Thread.sleep(1000);
-//        t.interrupt(); // 中断t线程
-//        t.join(); // 等待t线程结束
-//        System.out.println("end");
-
-
-
-//        Thread thread = new Thread(()-> {
-//            System.out.println("123");
-//        });
-//        System.out.println("start");
-//        thread.start();
-//        thread.join();
-//        System.out.println("end");
-
-
-//        Thread thread = new MyThread();
-//        thread.start();
-
-//        System.out.println("main start...");
-//        Thread t = new Thread() {
-//            public void run() {
-//                System.out.println("thread run...");
-//                try{
-//                    Thread.sleep(30);
-//                }catch (Exception e){}
-//                System.out.println("thread end.");
-//            }
-//        };
-//        t.start();
-//        try {
-//            Thread.sleep(20);
-//        } catch (Exception e){}
-//        System.out.println("main end...");
-
-
-
-//        ExecutorService service = Executors.newCachedThreadPool();
-//        final CountDownLatch cdOrder = new CountDownLatch(1);
-//        final CountDownLatch cdAnswer = new CountDownLatch(4);
-//        for (int i = 0; i < 4; i++) {
-//            Runnable runnable = new Runnable() {
-//                @Override
-//                public void run() {
-//                    try {
-//                        System.out.println("选手" + Thread.currentThread().getName() + "正在等待裁判发布口令");
-//                        cdOrder.await();
-//                        System.out.println("选手" + Thread.currentThread().getName() + "已接受裁判口令");
-//                        Thread.sleep((long) (Math.random() * 10000));
-//                        System.out.println("选手" + Thread.currentThread().getName() + "到达终点");
-//                        cdAnswer.countDown();
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            };
-//            service.execute(runnable);
-//        }
-//        try {
-//            Thread.sleep((long) (Math.random() * 10000));
-//            System.out.println("裁判"+Thread.currentThread().getName()+"即将发布口令");
-//            cdOrder.countDown();
-//            System.out.println("裁判"+Thread.currentThread().getName()+"已发送口令，正在等待所有选手到达终点");
-//            cdAnswer.await();
-//            System.out.println("所有选手都到达终点");
-//            System.out.println("裁判"+Thread.currentThread().getName()+"汇总成绩排名");
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//        service.shutdown();
-
-
-
-
-
-
-
-//        ExecutorService service = Executors.newFixedThreadPool(3);
-//        final CountDownLatch latch = new CountDownLatch(3);
-//        for (int i = 0; i < 3; i++) {
-//            Runnable runnable = new Runnable() {
-//                @Override
-//                public void run() {
-//                    try {
-//                        System.out.println("子线程" + Thread.currentThread().getName() + "开始执行");
-//                        Thread.sleep((long) (Math.random() * 10000));
-//                        System.out.println("子线程"+Thread.currentThread().getName()+"执行完成");
-//                        latch.countDown();//当前线程调用此方法，则计数减一
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            };
-//            service.execute(runnable);
-//        }
-//
-//        try {
-//            System.out.println("主线程"+Thread.currentThread().getName()+"等待子线程执行完成...");
-//            latch.await();//阻塞当前线程，直到计数器的值为0
-//            System.out.println("主线程"+Thread.currentThread().getName()+"开始执行...");
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-
-        //    public static class MyThread extends Thread{
-//        public void run() {
-//            Thread hello = new HelloThread();
-//            hello.start(); // 启动hello线程
-//            try {
-//                hello.join(); // 等待hello线程结束
-//            } catch (InterruptedException e) {
-//                System.out.println("interrupted!");
-//            }
-//            hello.interrupt();
-//        }
-//    }
-
-//    public static class HelloThread extends Thread {
-//        public volatile boolean running = true;
-//        public void run() {
-//            int n = 0;
-//            while (running) {
-//                n ++;
-//                System.out.println(n + " hello!");
-//            }
-//            System.out.println("end!");
-//        }
-//    }
+//        List<String> list = new ArrayList<>();
+//        list.add("19:40");
+//        list.add("08:45");
+//        list.add("12:30");
+//        list.add("12:10");
+//        list.add("06:48");
+//        list.add("08:20");
+//        List<String> sortList = list.stream().sorted(Comparator.comparing(Objects::toString)).collect(Collectors.toList());
+//        System.out.println(sortList);
     }
 
 }

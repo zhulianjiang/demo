@@ -32,6 +32,7 @@ public class GlobalExceptionAdvice {
 
     /**
      * 捕获通用类异常
+     *
      * @param req
      * @param e
      * @return
@@ -39,30 +40,31 @@ public class GlobalExceptionAdvice {
     @ExceptionHandler(Exception.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public UnifyResponse handleException(HttpServletRequest req,Exception e){
+    public UnifyResponse handleException(HttpServletRequest req, Exception e) {
         String requestUrl = req.getRequestURI();
         String method = req.getMethod();
 //        String msg = String.valueOf(e).substring(String.valueOf(e).indexOf(":")+2);
         System.out.println(e);
-        UnifyResponse unifyResponse = new UnifyResponse(1111,"服务器异常",method +" "+requestUrl);
+        UnifyResponse unifyResponse = new UnifyResponse(999999, "服务器异常", method + " " + requestUrl);
         return unifyResponse;
     }
 
     /**
      * 捕获HTTP异常
+     *
      * @param req
      * @param e
      * @return
      */
     @ExceptionHandler(HttpException.class)
-    public ResponseEntity<UnifyResponse> handleHttpException(HttpServletRequest req, HttpException e){
+    public ResponseEntity<UnifyResponse> handleHttpException(HttpServletRequest req, HttpException e) {
         String requestUrl = req.getRequestURI();
         String method = req.getMethod();
-        UnifyResponse message = new UnifyResponse(e.getCode(),codeConfiguration.getMessage(e.getCode()),method +" "+requestUrl);
+        UnifyResponse message = new UnifyResponse(e.getCode(), codeConfiguration.getMessage(e.getCode()), method + " " + requestUrl);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpStatus httpStatus = HttpStatus.resolve(e.getHttpStatusCode());
-        ResponseEntity<UnifyResponse> responseEntity = new ResponseEntity<UnifyResponse>(message,headers,httpStatus);
+        ResponseEntity<UnifyResponse> responseEntity = new ResponseEntity<UnifyResponse>(message, headers, httpStatus);
         return responseEntity;
     }
 
@@ -70,30 +72,30 @@ public class GlobalExceptionAdvice {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public UnifyResponse handleMethodArgumentNotValidException(HttpServletRequest req,MethodArgumentNotValidException e){
+    public UnifyResponse handleMethodArgumentNotValidException(HttpServletRequest req, MethodArgumentNotValidException e) {
         String requestUrl = req.getRequestURI();
         String method = req.getMethod();
         List<ObjectError> allErrors = e.getBindingResult().getAllErrors();
         String msg = this.getMsg(allErrors);
-        return new UnifyResponse(10001,msg,method +" "+requestUrl);
+        return new UnifyResponse(10001, msg, method + " " + requestUrl);
     }
 
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
-    public UnifyResponse handleConstraintViolationException(HttpServletRequest req,ConstraintViolationException e){
+    public UnifyResponse handleConstraintViolationException(HttpServletRequest req, ConstraintViolationException e) {
         String requestUrl = req.getRequestURI();
         String method = req.getMethod();
         String message = e.getMessage();
-        return new UnifyResponse(10001,message,method +" "+requestUrl);
+        return new UnifyResponse(10001, message, method + " " + requestUrl);
 //        for (ConstraintViolation error : e.getConstraintViolations()) {
 //            ConstraintViolation a = error;
 //        }
     }
 
-    public String getMsg(List<ObjectError> errors){
+    public String getMsg(List<ObjectError> errors) {
         StringBuilder messageSbr = new StringBuilder();
-        errors.forEach(err->{
+        errors.forEach(err -> {
             messageSbr.append(err.getDefaultMessage()).append(";");
         });
         return messageSbr.toString();

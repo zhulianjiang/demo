@@ -6,104 +6,55 @@ package com.hengnan.test;
  * @create: 2021/2/4 16:39
  **/
 public class Test2 {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
-//        long time1 = DateTimeUtil.timestampNow().getTime();
-//        var ts = new Thread[]{new AddStudentThread(), new DecStudentThread(), new AddTeacherThread(), new DecTeacherThread()};
-//        for (var t : ts) {
-//            t.start();
-//        }
-//        for (var t : ts) {
-//            t.join();
-//        }
-//        System.out.println(Counter.studentCount);
-//        System.out.println(Counter.teacherCount);
-//        long time2 = DateTimeUtil.timestampNow().getTime();
-//        System.out.println("=========:" + (time2-time1));
-//        Thread add = new AddThread();
-//        Thread dec = new DecThread();
-//        add.start();
-//        dec.start();
-//        add.join();
-//        dec.join();
-//        System.out.println(Counter.count);
+        Test2 tester = new Test2();
+
+        // 类型声明
+        MathOperation addition = (int a, int b) -> a + b;
+
+        // 不用类型声明
+        MathOperation subtraction = (a, b) -> a - b;
+
+        // 大括号中的返回语句
+        MathOperation multiplication = (int a, int b) -> { return a * b; };
+
+        // 没有大括号及返回语句
+        MathOperation division = (int a, int b) -> a / b;
+
+        System.out.println("10 + 5 = " + tester.operate(10, 5, addition));
+        System.out.println("10 - 5 = " + tester.operate(10, 5, subtraction));
+        System.out.println("10 x 5 = " + tester.operate(10, 5, multiplication));
+        System.out.println("10 / 5 = " + tester.operate(10, 5, division));
+
+        // 不用括号
+        GreetingService greetService1 = message ->
+                System.out.println("Hello " + message);
+
+        // 用括号
+        GreetingService greetService2 = (message) ->
+                System.out.println("Hello " + message);
+
+        greetService1.sayMessage("Runoob");
+        greetService2.sayMessage("Google");
+
+
+
     }
-}
 
-class Counter {
-    public static final Object lockTeacher = new Object();
-    public static final Object lockStudent = new Object();
-    public static int studentCount = 0;
-    public static int teacherCount = 0;
-}
-
-class AddStudentThread extends Thread {
-    public void run() {
-        for (int i = 0; i < 10000; i++) {
-            synchronized (Counter.lockStudent) {
-                Counter.studentCount += 1;
-            }
-        }
+    interface MathOperation {
+        int operation(int a, int b);
     }
-}
 
-class DecStudentThread extends Thread {
-    public void run() {
-        for (int i = 0; i < 10000; i++) {
-            synchronized (Counter.lockStudent) {
-                Counter.studentCount -= 1;
-            }
-        }
+    interface GreetingService {
+        void sayMessage(String message);
     }
-}
 
-class AddTeacherThread extends Thread {
-    public void run() {
-        for (int i = 0; i < 10000; i++) {
-            synchronized (Counter.lockTeacher) {
-                Counter.teacherCount += 1;
-            }
-        }
-    }
-}
-
-class DecTeacherThread extends Thread {
-    public void run() {
-        for (int i = 0; i < 10000; i++) {
-            synchronized (Counter.lockTeacher) {
-                Counter.teacherCount -= 1;
-            }
-        }
+    private int operate(int a, int b, MathOperation mathOperation){
+        return mathOperation.operation(a, b);
     }
 }
 
 
-//class Counter {
-////    public static final Object lock1 = new Object();
-////    public static final Object lock2 = new Object();
-////    public static final Object lock = new Object();
-//    public static final String lock = "lock";
-//    public static int count = 0;
-//}
-//
-//class AddThread extends Thread {
-//    public void run() {
-//        for (int i=0; i<10000; i++) {
-//            synchronized (Counter.lock){
-//                Counter.count += 1;
-//            }
-//        }
-//    }
-//}
-//
-//class DecThread extends Thread {
-//    public void run() {
-//        for (int i=0; i<10000; i++) {
-//            synchronized (Counter.lock){
-//                Counter.count -= 1;
-//            }
-//        }
-//    }
-//}
 
 

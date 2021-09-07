@@ -1,7 +1,7 @@
 package com.hengnan.service.impl;
 
 import com.hengnan.entity.User;
-import com.hengnan.mapper.UserMapper;
+import com.hengnan.mapper.test1.UserMapper;
 import com.hengnan.service.UserService;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
     @Resource
     private UserMapper userMapper;
 
-    public List<User> getUserList(){
+    public List<User> getUserList() {
         List<User> userList = userMapper.getUserList();
         return userList;
     }

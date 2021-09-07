@@ -16,7 +16,7 @@ import java.util.List;
  **/
 @Api(tags = "用户管理")
 @RestController
-@RequestMapping("userAdmin")
+@RequestMapping("/api/userAdmin")
 public class UserAdminController {
 
     @Autowired
@@ -24,14 +24,14 @@ public class UserAdminController {
 
     @ApiOperation("查询用户列表")
     @GetMapping("/getList")
-    public List<UserAdmin> getList(){
+    public List<UserAdmin> getList() {
         List<UserAdmin> userAdmins = userAdminService.getList();
         return userAdmins;
     }
 
     @ApiOperation("新增用户接口")
     @PostMapping("/add")
-    public UserAdmin add(@RequestBody UserAdmin userAdmin){
+    public UserAdmin add(@RequestBody UserAdmin userAdmin) {
         UserAdmin user = userAdminService.add(userAdmin);
         return user;
     }

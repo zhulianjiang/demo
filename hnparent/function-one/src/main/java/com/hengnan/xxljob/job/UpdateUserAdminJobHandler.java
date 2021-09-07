@@ -1,7 +1,7 @@
 package com.hengnan.xxljob.job;
 
 import com.hengnan.entity.UserAdmin;
-import com.hengnan.mapper.UserAdminMapper;
+import com.hengnan.mapper.test1.UserAdminMapper;
 import com.xxl.job.core.biz.model.ReturnT;
 import com.xxl.job.core.handler.annotation.XxlJob;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ public class UpdateUserAdminJobHandler {
     public ReturnT<String> execute(String param) throws Exception {
         Timestamp timestamp = new Timestamp(new Date().getTime());
         UserAdmin userAdmin = userAdminMapper.selectById(userId);
-        if(Objects.nonNull(userAdmin)){
+        if (Objects.nonNull(userAdmin)) {
             userAdmin.setCreationDate(timestamp);
             userAdmin.setLastUpdateDate(timestamp);
             userAdmin.setFirstName("1234");

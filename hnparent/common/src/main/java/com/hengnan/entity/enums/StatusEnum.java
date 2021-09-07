@@ -10,13 +10,13 @@ public enum StatusEnum implements IEnum<Integer> {
      * 0 删除
      */
 
-    NORMAL(1,"正常"),
-    DELETE(0,"删除");
+    NORMAL(1, "正常"),
+    DELETE(0, "删除");
 
     private int value;
     private String title;
 
-    StatusEnum(int value,String title){
+    StatusEnum(int value, String title) {
         this.value = value;
         this.title = title;
     }

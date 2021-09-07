@@ -36,7 +36,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         // 从 http 请求头中取出 Authorization
         String bearerToken = httpServletRequest.getHeader("Authorization");
         String token = null;
-        if(StringUtils.isNotBlank(bearerToken)){
+        if (StringUtils.isNotBlank(bearerToken)) {
             token = Arrays.asList(bearerToken.split(SEPARATOR)).get(1);
         }
         // 如果不是映射到方法直接通过

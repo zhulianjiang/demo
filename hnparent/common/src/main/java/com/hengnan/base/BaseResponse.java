@@ -15,27 +15,28 @@ public class BaseResponse<T> {
     private String message;
     private T result;
 
-    public BaseResponse(){}
+    public BaseResponse() {
+    }
 
-    public BaseResponse(int code,String message,T result){
+    public BaseResponse(int code, String message, T result) {
         this.setCode(code);
         this.setMessage(message);
         this.setResult(result);
     }
 
-    public static BaseResponse success(){
-        return new BaseResponse(MessageEnum.SUCCESS.value(), MessageEnum.SUCCESS.title(),null);
+    public static BaseResponse success() {
+        return new BaseResponse(MessageEnum.SUCCESS.value(), MessageEnum.SUCCESS.title(), null);
     }
 
-    public static BaseResponse success(Object t){
-        return new BaseResponse(MessageEnum.SUCCESS.value(), MessageEnum.SUCCESS.title(),t);
+    public static BaseResponse success(Object t) {
+        return new BaseResponse(MessageEnum.SUCCESS.value(), MessageEnum.SUCCESS.title(), t);
     }
 
-    public static BaseResponse fail(){
+    public static BaseResponse fail() {
         return new BaseResponse(MessageEnum.FAIL.value(), MessageEnum.FAIL.title(), null);
     }
 
-    public static BaseResponse fail(int value,String title){
+    public static BaseResponse fail(int value, String title) {
         return new BaseResponse(value, title, null);
     }
 

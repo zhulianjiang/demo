@@ -26,10 +26,10 @@ public class LoginController {
     public BaseResponse login(@RequestBody UserAdmin user) {
         UserAdmin userInfo = userService.findByLoginId(user.getLoginId());
         if (Objects.isNull(userInfo)) {
-            return BaseResponse.fail(MessageEnum.ERR_USER_NAME.value(),MessageEnum.ERR_USER_NAME.title());
+            return BaseResponse.fail(MessageEnum.ERR_USER_NAME.value(), MessageEnum.ERR_USER_NAME.title());
         }
-        if (!Objects.equals(userInfo.getPassWord(),user.getPassWord())) {
-            return BaseResponse.fail(MessageEnum.ERR_USER_PASSWORD.value(),MessageEnum.ERR_USER_PASSWORD.title());
+        if (!Objects.equals(userInfo.getPassWord(), user.getPassWord())) {
+            return BaseResponse.fail(MessageEnum.ERR_USER_PASSWORD.value(), MessageEnum.ERR_USER_PASSWORD.title());
         }
         String token = tokenService.getToken(userInfo);
         userInfo.setToken(token);

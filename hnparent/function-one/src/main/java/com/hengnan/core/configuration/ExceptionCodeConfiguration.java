@@ -13,11 +13,11 @@ import java.util.Map;
  * @create: 2020-09-28 23:16
  **/
 @ConfigurationProperties(prefix = "hengnan")
-@PropertySource(value = {"classpath:config/exception-code.properties"},encoding = "utf-8")
+@PropertySource(value = {"classpath:config/exception-code.properties"}, encoding = "utf-8")
 @Component
 public class ExceptionCodeConfiguration {
 
-    private Map<Integer,String> codes = new HashMap<>();
+    private Map<Integer, String> codes = new HashMap<>();
 
     public Map<Integer, String> getCodes() {
         return codes;
@@ -27,7 +27,7 @@ public class ExceptionCodeConfiguration {
         this.codes = codes;
     }
 
-    public String getMessage(int code){
+    public String getMessage(int code) {
         String message = codes.get(code);
         return message;
     }

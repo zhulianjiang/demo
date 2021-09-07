@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @GetMapping("/getInfo")
-    public BaseResponse getInfo(@RequestParam int id){
+    public BaseResponse getInfo(@RequestParam int id) {
         int paramId = id;
         return BaseResponse.success("this is common");
     }
